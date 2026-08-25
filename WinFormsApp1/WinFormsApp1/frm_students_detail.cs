@@ -104,6 +104,8 @@ namespace WinFormsApp1
                 txtTp.Focus();
                 return;
             }
+
+            MessageBox.Show("Student details submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);    
         }
 
         private void timer1_Tick(object sender, EventArgs e)

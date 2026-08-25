@@ -34,8 +34,9 @@
             // 
             // btnM2
             // 
-            btnM2.BackColor = SystemColors.ActiveCaption;
+            btnM2.BackColor = SystemColors.ActiveCaptionText;
             btnM2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnM2.ForeColor = SystemColors.ButtonFace;
             btnM2.Location = new Point(33, 189);
             btnM2.Name = "btnM2";
             btnM2.Size = new Size(370, 49);
@@ -48,8 +49,9 @@
             // 
             // btnM1
             // 
-            btnM1.BackColor = SystemColors.ActiveCaption;
+            btnM1.BackColor = SystemColors.ActiveCaptionText;
             btnM1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnM1.ForeColor = Color.White;
             btnM1.Location = new Point(33, 105);
             btnM1.Name = "btnM1";
             btnM1.Size = new Size(370, 49);

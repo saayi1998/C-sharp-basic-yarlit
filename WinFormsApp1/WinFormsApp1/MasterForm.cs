@@ -17,8 +17,8 @@ namespace WinFormsApp1
 
         private void btnM1_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.Show();
+            Form1 form = new Form1();
+            form.Show();
         }
 
         private void btnM2_Click(object sender, EventArgs e)
