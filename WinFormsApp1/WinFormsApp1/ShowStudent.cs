@@ -14,14 +14,23 @@ namespace WinFormsApp1
         string fname;
         string lname;
         String gender;
+        string DOB;
+        string DOA;
+        string nic;
+        string tel; 
+
         string Address;
 
-        public ShowStudent(string fname, string lname, string gender, string address)
+        public ShowStudent(string fname, string lname, string gender, string DOB, string DOA, string nic, string tel, string address)
         {
             InitializeComponent();
             this.fname = fname;
             this.lname = lname;
             this.gender = gender;
+            this.DOB = DOB;
+            this.DOA = DOA;
+            this.nic = nic;
+            this.tel = tel;
             this.Address = address; 
         }
 
@@ -37,7 +46,11 @@ namespace WinFormsApp1
             {
                 rbF.Checked = true;
             }
-            txtAdd.Text = Address;
+            txtDOB1.Text = DOB;
+            txtDOA1.Text = DOA;
+            txtNIC1.Text = nic;
+            txtTel1.Text = tel;
+            txtAdd1.Text = Address;
         }
 
         private void label1_Click(object sender, EventArgs e)
