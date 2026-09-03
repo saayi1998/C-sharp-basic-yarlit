@@ -62,6 +62,14 @@
             label2 = new Label();
             label4 = new Label();
             comboBox3 = new ComboBox();
+            btn_Insert = new Button();
+            btn_Delete = new Button();
+            btn_Edit = new Button();
+            label5 = new Label();
+            lbl_ADno = new Label();
+            textBox1 = new TextBox();
+            label6 = new Label();
+            textBox2 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvStu).BeginInit();
             SuspendLayout();
             // 
@@ -92,13 +100,13 @@
             dgvStu.Location = new Point(26, 108);
             dgvStu.Name = "dgvStu";
             dgvStu.RowHeadersWidth = 51;
-            dgvStu.Size = new Size(795, 593);
+            dgvStu.Size = new Size(795, 779);
             dgvStu.TabIndex = 1;
             // 
             // lblF
             // 
             lblF.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblF.Location = new Point(849, 130);
+            lblF.Location = new Point(857, 181);
             lblF.Name = "lblF";
             lblF.Size = new Size(110, 32);
             lblF.TabIndex = 2;
@@ -109,7 +117,7 @@
             // lblL
             // 
             lblL.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblL.Location = new Point(849, 176);
+            lblL.Location = new Point(857, 227);
             lblL.Name = "lblL";
             lblL.Size = new Size(142, 27);
             lblL.TabIndex = 2;
@@ -129,14 +137,14 @@
             // 
             // txtF
             // 
-            txtF.Location = new Point(999, 130);
+            txtF.Location = new Point(1007, 181);
             txtF.Name = "txtF";
             txtF.Size = new Size(243, 27);
             txtF.TabIndex = 5;
             // 
             // txtL
             // 
-            txtL.Location = new Point(999, 176);
+            txtL.Location = new Point(1007, 227);
             txtL.Name = "txtL";
             txtL.Size = new Size(241, 27);
             txtL.TabIndex = 5;
@@ -144,7 +152,7 @@
             // lblGrd
             // 
             lblGrd.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGrd.Location = new Point(858, 260);
+            lblGrd.Location = new Point(866, 311);
             lblGrd.Name = "lblGrd";
             lblGrd.Size = new Size(144, 32);
             lblGrd.TabIndex = 2;
@@ -154,7 +162,7 @@
             // cmbLG
             // 
             cmbLG.FormattingEnabled = true;
-            cmbLG.Location = new Point(999, 260);
+            cmbLG.Location = new Point(1007, 311);
             cmbLG.Name = "cmbLG";
             cmbLG.Size = new Size(250, 28);
             cmbLG.TabIndex = 6;
@@ -172,7 +180,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(999, 303);
+            button1.Location = new Point(1007, 354);
             button1.Name = "button1";
             button1.Size = new Size(90, 32);
             button1.TabIndex = 7;
@@ -182,7 +190,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(1145, 303);
+            button2.Location = new Point(1153, 354);
             button2.Name = "button2";
             button2.Size = new Size(95, 32);
             button2.TabIndex = 7;
@@ -204,7 +212,7 @@
             // lblGen
             // 
             lblGen.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGen.Location = new Point(849, 217);
+            lblGen.Location = new Point(857, 268);
             lblGen.Name = "lblGen";
             lblGen.Size = new Size(110, 32);
             lblGen.TabIndex = 2;
@@ -214,7 +222,7 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(999, 220);
+            radioButton1.Location = new Point(1007, 271);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(63, 24);
             radioButton1.TabIndex = 8;
@@ -225,7 +233,7 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(1164, 217);
+            radioButton2.Location = new Point(1172, 268);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(78, 24);
             radioButton2.TabIndex = 8;
@@ -236,7 +244,7 @@
             // lblDOB
             // 
             lblDOB.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDOB.Location = new Point(849, 352);
+            lblDOB.Location = new Point(857, 403);
             lblDOB.Name = "lblDOB";
             lblDOB.Size = new Size(144, 32);
             lblDOB.TabIndex = 2;
@@ -247,7 +255,7 @@
             // lblNIC
             // 
             lblNIC.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNIC.Location = new Point(849, 434);
+            lblNIC.Location = new Point(857, 485);
             lblNIC.Name = "lblNIC";
             lblNIC.Size = new Size(144, 32);
             lblNIC.TabIndex = 2;
@@ -257,7 +265,7 @@
             // 
             // txtNIC
             // 
-            txtNIC.Location = new Point(999, 436);
+            txtNIC.Location = new Point(1007, 487);
             txtNIC.Name = "txtNIC";
             txtNIC.Size = new Size(255, 27);
             txtNIC.TabIndex = 5;
@@ -265,7 +273,7 @@
             // lblTel
             // 
             lblTel.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTel.Location = new Point(849, 481);
+            lblTel.Location = new Point(857, 532);
             lblTel.Name = "lblTel";
             lblTel.Size = new Size(144, 32);
             lblTel.TabIndex = 2;
@@ -275,7 +283,7 @@
             // 
             // txtTel
             // 
-            txtTel.Location = new Point(999, 481);
+            txtTel.Location = new Point(1007, 532);
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(250, 27);
             txtTel.TabIndex = 5;
@@ -295,7 +303,7 @@
             // lblDOA
             // 
             lblDOA.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDOA.Location = new Point(827, 393);
+            lblDOA.Location = new Point(835, 444);
             lblDOA.Name = "lblDOA";
             lblDOA.Size = new Size(181, 32);
             lblDOA.TabIndex = 2;
@@ -306,7 +314,7 @@
             // label3
             // 
             label3.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(849, 533);
+            label3.Location = new Point(857, 584);
             label3.Name = "label3";
             label3.Size = new Size(144, 32);
             label3.TabIndex = 2;
@@ -316,7 +324,7 @@
             // 
             // txtADD
             // 
-            txtADD.Location = new Point(999, 533);
+            txtADD.Location = new Point(1007, 584);
             txtADD.Name = "txtADD";
             txtADD.Size = new Size(255, 27);
             txtADD.TabIndex = 5;
@@ -324,14 +332,14 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(999, 352);
+            dateTimePicker1.Location = new Point(1007, 403);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(250, 27);
             dateTimePicker1.TabIndex = 9;
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(999, 393);
+            dateTimePicker2.Location = new Point(1007, 444);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(250, 27);
             dateTimePicker2.TabIndex = 9;
@@ -339,7 +347,7 @@
             // label1
             // 
             label1.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(849, 587);
+            label1.Location = new Point(857, 638);
             label1.Name = "label1";
             label1.Size = new Size(144, 32);
             label1.TabIndex = 2;
@@ -350,7 +358,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Tamil ", "English" });
-            comboBox1.Location = new Point(999, 587);
+            comboBox1.Location = new Point(1007, 638);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(255, 28);
             comboBox1.TabIndex = 6;
@@ -358,7 +366,7 @@
             // comboBox22
             // 
             comboBox22.FormattingEnabled = true;
-            comboBox22.Location = new Point(999, 630);
+            comboBox22.Location = new Point(1007, 681);
             comboBox22.Name = "comboBox22";
             comboBox22.Size = new Size(255, 28);
             comboBox22.TabIndex = 6;
@@ -366,7 +374,7 @@
             // label2
             // 
             label2.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(847, 630);
+            label2.Location = new Point(855, 681);
             label2.Name = "label2";
             label2.Size = new Size(144, 32);
             label2.TabIndex = 2;
@@ -376,7 +384,7 @@
             // label4
             // 
             label4.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(849, 669);
+            label4.Location = new Point(857, 720);
             label4.Name = "label4";
             label4.Size = new Size(144, 32);
             label4.TabIndex = 2;
@@ -386,16 +394,100 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(999, 669);
+            comboBox3.Location = new Point(1007, 720);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(255, 28);
             comboBox3.TabIndex = 6;
+            // 
+            // btn_Insert
+            // 
+            btn_Insert.BackColor = Color.Lime;
+            btn_Insert.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Insert.Location = new Point(858, 805);
+            btn_Insert.Name = "btn_Insert";
+            btn_Insert.Size = new Size(172, 65);
+            btn_Insert.TabIndex = 63;
+            btn_Insert.Text = "INSERT";
+            btn_Insert.UseVisualStyleBackColor = false;
+            btn_Insert.Click += btn_Insert_Click;
+            // 
+            // btn_Delete
+            // 
+            btn_Delete.BackColor = Color.IndianRed;
+            btn_Delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Delete.Location = new Point(1074, 805);
+            btn_Delete.Name = "btn_Delete";
+            btn_Delete.Size = new Size(168, 65);
+            btn_Delete.TabIndex = 64;
+            btn_Delete.Text = "DELETE";
+            btn_Delete.UseVisualStyleBackColor = false;
+            btn_Delete.Click += btn_Delete_Click;
+            // 
+            // btn_Edit
+            // 
+            btn_Edit.BackColor = Color.PowderBlue;
+            btn_Edit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Edit.Location = new Point(1059, 29);
+            btn_Edit.Name = "btn_Edit";
+            btn_Edit.Size = new Size(172, 65);
+            btn_Edit.TabIndex = 65;
+            btn_Edit.Text = "EDIT";
+            btn_Edit.UseVisualStyleBackColor = false;
+            btn_Edit.Click += btn_Edit_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(0, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(50, 20);
+            label5.TabIndex = 66;
+            label5.Text = "label5";
+            // 
+            // lbl_ADno
+            // 
+            lbl_ADno.Location = new Point(844, 765);
+            lbl_ADno.Name = "lbl_ADno";
+            lbl_ADno.Size = new Size(145, 40);
+            lbl_ADno.TabIndex = 67;
+            lbl_ADno.Text = "Admission No";
+            lbl_ADno.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(1012, 772);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(245, 27);
+            textBox1.TabIndex = 68;
+            // 
+            // label6
+            // 
+            label6.Location = new Point(857, 119);
+            label6.Name = "label6";
+            label6.Size = new Size(110, 40);
+            label6.TabIndex = 69;
+            label6.Text = "ID Name";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(1007, 119);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(235, 27);
+            textBox2.TabIndex = 70;
             // 
             // DBForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1278, 737);
+            ClientSize = new Size(1278, 920);
+            Controls.Add(textBox2);
+            Controls.Add(label6);
+            Controls.Add(textBox1);
+            Controls.Add(lbl_ADno);
+            Controls.Add(label5);
+            Controls.Add(btn_Edit);
+            Controls.Add(btn_Insert);
+            Controls.Add(btn_Delete);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
             Controls.Add(radioButton2);
@@ -473,5 +565,13 @@
         private Label label2;
         private Label label4;
         private ComboBox comboBox3;
+        private Button btn_Insert;
+        private Button btn_Delete;
+        private Button btn_Edit;
+        private Label label5;
+        private Label lbl_ADno;
+        private TextBox textBox1;
+        private Label label6;
+        private TextBox textBox2;
     }
 }

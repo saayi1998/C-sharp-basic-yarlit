@@ -77,6 +77,9 @@ namespace WinFormsApp1
                     MessageBox.Show("No records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+                string studentId = dgvStu.CurrentRow.Cells["id"].Value.ToString();
+                textBox2.Text = studentId;
+
                 string fname = dgvStu.CurrentRow.Cells["first_name"].Value.ToString();
                 txtF.Text = fname;
 
@@ -109,12 +112,17 @@ namespace WinFormsApp1
                 string family = dgvStu.CurrentRow.Cells["family_id"].Value.ToString();
                 comboBox3.Text = family;
 
+                string admission = dgvStu.CurrentRow.Cells["admission_number"].Value.ToString();
+                textBox1.Text = admission;
+
                 string medium = dgvStu.CurrentRow.Cells["medium"].Value.ToString();
                 comboBox1.Text = medium;
 
+
+
                 // GRADE ID
 
-                
+
                 conn.Open();
 
                 string query = "SELECT * FROM grades";
@@ -167,18 +175,18 @@ namespace WinFormsApp1
                     comboBox1.Text = medium;
                 }
 
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Error occurred while fetching student data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-
             }
-        
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error occurred while fetching student data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
 
 
         private void btnLG_Click(object sender, EventArgs e)
@@ -280,6 +288,75 @@ namespace WinFormsApp1
         private void btn_Update_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Insert_Click(object sender, EventArgs e)
+        {
+            //string id = dgvStu.CurrentRow.Cells["id"].Value.ToString();
+
+            //EditStudent f = new EditStudent(id);
+
+            //f.ShowDialog();
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            try
+            {
+                if (dgvStu.Rows.Count == 0)
+                {
+                    MessageBox.Show("No records found.", "Delete Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                string studentId = dgvStu.CurrentRow.Cells["id"].Value.ToString();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand($"DELETE FROM students WHERE id = '{studentId}'", conn);
+                string affectedRows = cmd.ExecuteNonQuery().ToString();
+
+                MessageBox.Show($"Deleted successfully. Row(s) affected: {affectedRows}", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("An error occurred while deleting the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = dgvStu.CurrentRow.Cells["id"].Value.ToString();
+                string fname = dgvStu.CurrentRow.Cells["first_name"].Value.ToString();
+                string lname = dgvStu.CurrentRow.Cells["last_name"].Value.ToString();
+                string gender = dgvStu.CurrentRow.Cells["gender"].Value.ToString();
+                string DOB = Convert.ToDateTime(dgvStu.CurrentRow.Cells["date_of_birth"].Value).ToString("yyyy-MM-dd");
+                string DOA = Convert.ToDateTime(dgvStu.CurrentRow.Cells["date_of_admission"].Value).ToString("yyyy-MM-dd");
+                string nic = dgvStu.CurrentRow.Cells["nic_number"].Value.ToString();
+                string tel = dgvStu.CurrentRow.Cells["tele_number"].Value.ToString();
+                string address = dgvStu.CurrentRow.Cells["per_address"].Value.ToString();
+                string grade = dgvStu.CurrentRow.Cells["grade_id"].Value.ToString();
+                string family = dgvStu.CurrentRow.Cells["family_id"].Value.ToString();
+                string house = dgvStu.CurrentRow.Cells["house_id"].Value.ToString();
+                string admission = dgvStu.CurrentRow.Cells["admission_number"].Value.ToString();
+                string medium = dgvStu.CurrentRow.Cells["medium"].Value.ToString();
+
+                EditStudent f = new EditStudent(id, fname, lname, gender, DOB, DOA, nic, tel, address, house, family, grade, admission, medium);
+                f.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace WinFormsApp1
         string family;  
         string Address;
 
-        public EditStudent(string fname, string lname, string gender, string DOB, string DOA, string nic, string tel, string address, string house, string family, string grade, string admission, string medium)
+        public EditStudent(string fname , string lname, string gender, string DOB, string DOA, string nic, string tel, string address, string house, string family, string grade, string admission, string medium)
         {
             InitializeComponent();
             this.fname = fname;

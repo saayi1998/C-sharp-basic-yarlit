@@ -55,8 +55,6 @@
             lblDOB = new Label();
             dtpDOB = new DateTimePicker();
             dtpDOA = new DateTimePicker();
-            btn_Insert = new Button();
-            btn_Delete = new Button();
             btn_Update = new Button();
             SuspendLayout();
             // 
@@ -300,33 +298,11 @@
             dtpDOA.Size = new Size(250, 27);
             dtpDOA.TabIndex = 60;
             // 
-            // btn_Insert
-            // 
-            btn_Insert.BackColor = Color.Lime;
-            btn_Insert.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Insert.Location = new Point(640, 423);
-            btn_Insert.Name = "btn_Insert";
-            btn_Insert.Size = new Size(127, 69);
-            btn_Insert.TabIndex = 61;
-            btn_Insert.Text = "INSERT";
-            btn_Insert.UseVisualStyleBackColor = false;
-            // 
-            // btn_Delete
-            // 
-            btn_Delete.BackColor = Color.IndianRed;
-            btn_Delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Delete.Location = new Point(512, 425);
-            btn_Delete.Name = "btn_Delete";
-            btn_Delete.Size = new Size(106, 65);
-            btn_Delete.TabIndex = 62;
-            btn_Delete.Text = "DELETE";
-            btn_Delete.UseVisualStyleBackColor = false;
-            // 
             // btn_Update
             // 
             btn_Update.BackColor = SystemColors.ActiveCaption;
             btn_Update.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Update.Location = new Point(362, 427);
+            btn_Update.Location = new Point(493, 421);
             btn_Update.Name = "btn_Update";
             btn_Update.Size = new Size(111, 65);
             btn_Update.TabIndex = 63;
@@ -338,8 +314,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1088, 526);
-            Controls.Add(btn_Insert);
-            Controls.Add(btn_Delete);
             Controls.Add(btn_Update);
             Controls.Add(dtpDOA);
             Controls.Add(dtpDOB);
@@ -404,8 +378,6 @@
         private Label lblDOB;
         private DateTimePicker dtpDOB;
         private DateTimePicker dtpDOA;
-        private Button btn_Insert;
-        private Button btn_Delete;
         private Button btn_Update;
     }
 }
