@@ -10,7 +10,7 @@ using System.Windows.Forms.Design;
 
 namespace WinFormsApp1
 {
-    public partial class ShowStudent : Form
+    public partial class EditStudent : Form
     {
         string fname;
         string lname;
@@ -26,7 +26,7 @@ namespace WinFormsApp1
         string family;  
         string Address;
 
-        public ShowStudent(string fname, string lname, string gender, string DOB, string DOA, string nic, string tel, string address, string house, string family, string grade, string admission, string medium)
+        public EditStudent(string fname, string lname, string gender, string DOB, string DOA, string nic, string tel, string address, string house, string family, string grade, string admission, string medium)
         {
             InitializeComponent();
             this.fname = fname;
@@ -79,7 +79,8 @@ namespace WinFormsApp1
 
 
                 string query = "SELECT * FROM grades";
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                MySqlDataAdapter da =
+                new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -96,40 +97,19 @@ namespace WinFormsApp1
                     cmbGr.SelectedValue =Convert.ToInt32(grade);
                 }
 
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error occurred while fetching student data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            
 
-
-                // HOUSE ID
-                string queryy = "SELECT * FROM houses";
-                MySqlDataAdapter daa = new MySqlDataAdapter(queryy, conn);
-                DataTable dtt = new DataTable();
-                daa.Fill(dtt);
-
-                cmbHid.DataSource = dtt;
-                // what user sees
-                cmbHid.DisplayMember = "house_name";
-                // hidden value
-                cmbHid.ValueMember = "id";
-
-
-                // select student's house
-                if (!string.IsNullOrEmpty(house))
-                {
-                    cmbHid.SelectedValue = Convert.ToInt32(house);
-                }
-
-                // what user sees
-                cmbGr.DisplayMember = "grade_name";
-                // hidden value
-                cmbGr.ValueMember = "id";
-
-
-                // select student's grade
-                if (!string.IsNullOrEmpty(grade))
-                {
-                    cmbGr.SelectedValue = Convert.ToInt32(grade);
-                }
-
-                if (house != "")
+            // HOUSE ID
+            if (house != "")
             { 
                 cmbHid.SelectedValue = Convert.ToInt32(house);
             }
@@ -160,17 +140,6 @@ namespace WinFormsApp1
             {
                 dtpDOA.Value = Convert.ToDateTime(DOA);
             }
-
-                       }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error occurred while fetching student data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            
         }
              
     }

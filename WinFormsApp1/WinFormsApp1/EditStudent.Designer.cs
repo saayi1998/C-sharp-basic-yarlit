@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class ShowStudent
+    partial class EditStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -55,6 +55,9 @@
             lblDOB = new Label();
             dtpDOB = new DateTimePicker();
             dtpDOA = new DateTimePicker();
+            btn_Insert = new Button();
+            btn_Delete = new Button();
+            btn_Update = new Button();
             SuspendLayout();
             // 
             // cmbFid
@@ -77,7 +80,7 @@
             // 
             cmbM.FormattingEnabled = true;
             cmbM.Items.AddRange(new object[] { "Tamil", "English " });
-            cmbM.Location = new Point(236, 263);
+            cmbM.Location = new Point(234, 254);
             cmbM.Name = "cmbM";
             cmbM.Size = new Size(250, 28);
             cmbM.TabIndex = 55;
@@ -85,7 +88,7 @@
             // cmbGr
             // 
             cmbGr.FormattingEnabled = true;
-            cmbGr.Location = new Point(238, 220);
+            cmbGr.Location = new Point(236, 215);
             cmbGr.Name = "cmbGr";
             cmbGr.Size = new Size(248, 28);
             cmbGr.TabIndex = 57;
@@ -93,7 +96,7 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(398, 177);
+            radioButton2.Location = new Point(408, 169);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(78, 24);
             radioButton2.TabIndex = 53;
@@ -104,7 +107,7 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(238, 177);
+            radioButton1.Location = new Point(238, 169);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(63, 24);
             radioButton1.TabIndex = 54;
@@ -114,7 +117,7 @@
             // 
             // txtadn
             // 
-            txtadn.Location = new Point(236, 311);
+            txtadn.Location = new Point(236, 293);
             txtadn.Name = "txtadn";
             txtadn.Size = new Size(250, 27);
             txtadn.TabIndex = 46;
@@ -142,15 +145,15 @@
             // 
             // txtL
             // 
-            txtL.Location = new Point(238, 136);
+            txtL.Location = new Point(234, 124);
             txtL.Name = "txtL";
-            txtL.Size = new Size(248, 27);
+            txtL.Size = new Size(252, 27);
             txtL.TabIndex = 52;
             // 
             // label3
             // 
             label3.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(43, 310);
+            label3.Location = new Point(43, 291);
             label3.Name = "label3";
             label3.Size = new Size(144, 27);
             label3.TabIndex = 36;
@@ -174,7 +177,7 @@
             lblH.Name = "lblH";
             lblH.Size = new Size(144, 27);
             lblH.TabIndex = 35;
-            lblH.Text = "House Name";
+            lblH.Text = "House id ";
             lblH.UseCompatibleTextRendering = true;
             // 
             // lblADD
@@ -210,7 +213,7 @@
             // lblMEE
             // 
             lblMEE.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMEE.Location = new Point(41, 263);
+            lblMEE.Location = new Point(43, 254);
             lblMEE.Name = "lblMEE";
             lblMEE.Size = new Size(144, 32);
             lblMEE.TabIndex = 43;
@@ -220,7 +223,7 @@
             // label2
             // 
             label2.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(41, 220);
+            label2.Location = new Point(43, 211);
             label2.Name = "label2";
             label2.Size = new Size(144, 32);
             label2.TabIndex = 42;
@@ -240,7 +243,7 @@
             // lblGen
             // 
             lblGen.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGen.Location = new Point(43, 177);
+            lblGen.Location = new Point(43, 170);
             lblGen.Name = "lblGen";
             lblGen.Size = new Size(110, 32);
             lblGen.TabIndex = 44;
@@ -250,7 +253,7 @@
             // label1
             // 
             label1.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(43, 136);
+            label1.Location = new Point(43, 124);
             label1.Name = "label1";
             label1.Size = new Size(142, 27);
             label1.TabIndex = 45;
@@ -259,15 +262,15 @@
             // 
             // txtF1
             // 
-            txtF1.Location = new Point(238, 82);
+            txtF1.Location = new Point(234, 80);
             txtF1.Name = "txtF1";
-            txtF1.Size = new Size(248, 27);
+            txtF1.Size = new Size(252, 27);
             txtF1.TabIndex = 32;
             // 
             // lblL
             // 
             lblL.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblL.Location = new Point(43, 82);
+            lblL.Location = new Point(43, 75);
             lblL.Name = "lblL";
             lblL.Size = new Size(110, 32);
             lblL.TabIndex = 30;
@@ -276,7 +279,7 @@
             // lblDOB
             // 
             lblDOB.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDOB.Location = new Point(41, 354);
+            lblDOB.Location = new Point(41, 329);
             lblDOB.Name = "lblDOB";
             lblDOB.Size = new Size(144, 27);
             lblDOB.TabIndex = 59;
@@ -285,7 +288,7 @@
             // 
             // dtpDOB
             // 
-            dtpDOB.Location = new Point(236, 354);
+            dtpDOB.Location = new Point(234, 341);
             dtpDOB.Name = "dtpDOB";
             dtpDOB.Size = new Size(250, 27);
             dtpDOB.TabIndex = 60;
@@ -297,11 +300,47 @@
             dtpDOA.Size = new Size(250, 27);
             dtpDOA.TabIndex = 60;
             // 
-            // ShowStudent
+            // btn_Insert
+            // 
+            btn_Insert.BackColor = Color.Lime;
+            btn_Insert.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Insert.Location = new Point(640, 423);
+            btn_Insert.Name = "btn_Insert";
+            btn_Insert.Size = new Size(127, 69);
+            btn_Insert.TabIndex = 61;
+            btn_Insert.Text = "INSERT";
+            btn_Insert.UseVisualStyleBackColor = false;
+            // 
+            // btn_Delete
+            // 
+            btn_Delete.BackColor = Color.IndianRed;
+            btn_Delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Delete.Location = new Point(512, 425);
+            btn_Delete.Name = "btn_Delete";
+            btn_Delete.Size = new Size(106, 65);
+            btn_Delete.TabIndex = 62;
+            btn_Delete.Text = "DELETE";
+            btn_Delete.UseVisualStyleBackColor = false;
+            // 
+            // btn_Update
+            // 
+            btn_Update.BackColor = SystemColors.ActiveCaption;
+            btn_Update.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Update.Location = new Point(362, 427);
+            btn_Update.Name = "btn_Update";
+            btn_Update.Size = new Size(111, 65);
+            btn_Update.TabIndex = 63;
+            btn_Update.Text = "UPDATE";
+            btn_Update.UseVisualStyleBackColor = false;
+            // 
+            // EditStudent
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1088, 433);
+            ClientSize = new Size(1088, 526);
+            Controls.Add(btn_Insert);
+            Controls.Add(btn_Delete);
+            Controls.Add(btn_Update);
             Controls.Add(dtpDOA);
             Controls.Add(dtpDOB);
             Controls.Add(lblDOB);
@@ -329,8 +368,8 @@
             Controls.Add(label1);
             Controls.Add(txtF1);
             Controls.Add(lblL);
-            Name = "ShowStudent";
-            Text = "ShowStudent";
+            Name = "EditStudent";
+            Text = "EditStudent";
             Load += ShowStudent_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -365,5 +404,8 @@
         private Label lblDOB;
         private DateTimePicker dtpDOB;
         private DateTimePicker dtpDOA;
+        private Button btn_Insert;
+        private Button btn_Delete;
+        private Button btn_Update;
     }
 }

@@ -17,4 +17,10 @@
     <PackageReference Include="MySql.Data" Version="8.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="EditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
