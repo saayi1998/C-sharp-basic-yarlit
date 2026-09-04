@@ -168,13 +168,14 @@
             // 
             // btnLG
             // 
+            btnLG.BackColor = SystemColors.GradientActiveCaption;
             btnLG.Location = new Point(414, 29);
             btnLG.Name = "btnLG";
             btnLG.Size = new Size(152, 56);
             btnLG.TabIndex = 3;
             btnLG.Text = "Load Grade";
             btnLG.UseMnemonic = false;
-            btnLG.UseVisualStyleBackColor = true;
+            btnLG.UseVisualStyleBackColor = false;
             btnLG.Click += btnLG_Click;
             // 
             // button1
