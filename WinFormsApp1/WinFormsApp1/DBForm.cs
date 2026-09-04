@@ -78,7 +78,7 @@ namespace WinFormsApp1
                     return;
                 }
                 string studentId = dgvStu.CurrentRow.Cells["id"].Value.ToString();
-                textBox2.Text = studentId;
+                txt_F1.Text = studentId;
 
                 string fname = dgvStu.CurrentRow.Cells["first_name"].Value.ToString();
                 txtF.Text = fname;
@@ -113,7 +113,7 @@ namespace WinFormsApp1
                 comboBox3.Text = family;
 
                 string admission = dgvStu.CurrentRow.Cells["admission_number"].Value.ToString();
-                textBox1.Text = admission;
+                txt_AdM.Text = admission;
 
                 string medium = dgvStu.CurrentRow.Cells["medium"].Value.ToString();
                 comboBox1.Text = medium;

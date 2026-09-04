@@ -65,10 +65,10 @@
             btn_Insert = new Button();
             btn_Delete = new Button();
             btn_Edit = new Button();
-            lbl_ADno = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txt_AdM = new TextBox();
+            txt_F1 = new TextBox();
             lbl_F1 = new Label();
+            lbl_AdM = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvStu).BeginInit();
             SuspendLayout();
             // 
@@ -313,19 +313,20 @@
             // label3
             // 
             label3.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(857, 584);
+            label3.Location = new Point(827, 636);
             label3.Name = "label3";
             label3.Size = new Size(144, 32);
             label3.TabIndex = 2;
             label3.Text = "Address";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             label3.UseCompatibleTextRendering = true;
             label3.Click += label1_Click;
             // 
             // txtADD
             // 
-            txtADD.Location = new Point(1007, 584);
+            txtADD.Location = new Point(1007, 636);
             txtADD.Name = "txtADD";
-            txtADD.Size = new Size(255, 27);
+            txtADD.Size = new Size(250, 27);
             txtADD.TabIndex = 5;
             txtADD.TextChanged += txtADD_TextChanged;
             // 
@@ -346,7 +347,7 @@
             // label1
             // 
             label1.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(857, 638);
+            label1.Location = new Point(857, 679);
             label1.Name = "label1";
             label1.Size = new Size(144, 32);
             label1.TabIndex = 2;
@@ -357,7 +358,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Tamil ", "English" });
-            comboBox1.Location = new Point(1007, 638);
+            comboBox1.Location = new Point(1007, 679);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(255, 28);
             comboBox1.TabIndex = 6;
@@ -365,7 +366,7 @@
             // comboBox22
             // 
             comboBox22.FormattingEnabled = true;
-            comboBox22.Location = new Point(1007, 681);
+            comboBox22.Location = new Point(1007, 722);
             comboBox22.Name = "comboBox22";
             comboBox22.Size = new Size(255, 28);
             comboBox22.TabIndex = 6;
@@ -373,7 +374,7 @@
             // label2
             // 
             label2.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(855, 681);
+            label2.Location = new Point(855, 722);
             label2.Name = "label2";
             label2.Size = new Size(144, 32);
             label2.TabIndex = 2;
@@ -383,7 +384,7 @@
             // label4
             // 
             label4.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(857, 720);
+            label4.Location = new Point(857, 761);
             label4.Name = "label4";
             label4.Size = new Size(144, 32);
             label4.TabIndex = 2;
@@ -393,7 +394,7 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(1007, 720);
+            comboBox3.Location = new Point(1007, 761);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(255, 28);
             comboBox3.TabIndex = 6;
@@ -402,7 +403,7 @@
             // 
             btn_Insert.BackColor = Color.Lime;
             btn_Insert.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Insert.Location = new Point(858, 805);
+            btn_Insert.Location = new Point(864, 822);
             btn_Insert.Name = "btn_Insert";
             btn_Insert.Size = new Size(172, 65);
             btn_Insert.TabIndex = 63;
@@ -414,7 +415,7 @@
             // 
             btn_Delete.BackColor = Color.IndianRed;
             btn_Delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Delete.Location = new Point(1074, 805);
+            btn_Delete.Location = new Point(1080, 822);
             btn_Delete.Name = "btn_Delete";
             btn_Delete.Size = new Size(168, 65);
             btn_Delete.TabIndex = 64;
@@ -426,7 +427,7 @@
             // 
             btn_Edit.BackColor = Color.PowderBlue;
             btn_Edit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Edit.Location = new Point(1059, 29);
+            btn_Edit.Location = new Point(1070, 25);
             btn_Edit.Name = "btn_Edit";
             btn_Edit.Size = new Size(172, 65);
             btn_Edit.TabIndex = 65;
@@ -434,28 +435,19 @@
             btn_Edit.UseVisualStyleBackColor = false;
             btn_Edit.Click += btn_Edit_Click;
             // 
-            // lbl_ADno
+            // txt_AdM
             // 
-            lbl_ADno.Location = new Point(844, 765);
-            lbl_ADno.Name = "lbl_ADno";
-            lbl_ADno.Size = new Size(145, 40);
-            lbl_ADno.TabIndex = 67;
-            lbl_ADno.Text = "Admission No";
-            lbl_ADno.TextAlign = ContentAlignment.MiddleCenter;
+            txt_AdM.Location = new Point(1007, 584);
+            txt_AdM.Name = "txt_AdM";
+            txt_AdM.Size = new Size(245, 27);
+            txt_AdM.TabIndex = 68;
             // 
-            // textBox1
+            // txt_F1
             // 
-            textBox1.Location = new Point(1012, 772);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(245, 27);
-            textBox1.TabIndex = 68;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(1007, 119);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(235, 27);
-            textBox2.TabIndex = 70;
+            txt_F1.Location = new Point(1007, 119);
+            txt_F1.Name = "txt_F1";
+            txt_F1.Size = new Size(235, 27);
+            txt_F1.TabIndex = 70;
             // 
             // lbl_F1
             // 
@@ -464,18 +456,28 @@
             lbl_F1.Name = "lbl_F1";
             lbl_F1.Size = new Size(110, 32);
             lbl_F1.TabIndex = 2;
-            lbl_F1.Text = "First Name ";
+            lbl_F1.Text = "Student Id";
             lbl_F1.UseCompatibleTextRendering = true;
             lbl_F1.Click += lblF_Click;
+            // 
+            // lbl_AdM
+            // 
+            lbl_AdM.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_AdM.Location = new Point(852, 584);
+            lbl_AdM.Name = "lbl_AdM";
+            lbl_AdM.Size = new Size(144, 32);
+            lbl_AdM.TabIndex = 2;
+            lbl_AdM.Text = "Admission No";
+            lbl_AdM.UseCompatibleTextRendering = true;
+            lbl_AdM.Click += label1_Click;
             // 
             // DBForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1278, 951);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(lbl_ADno);
+            ClientSize = new Size(1278, 894);
+            Controls.Add(txt_F1);
+            Controls.Add(txt_AdM);
             Controls.Add(btn_Edit);
             Controls.Add(btn_Insert);
             Controls.Add(btn_Delete);
@@ -498,6 +500,7 @@
             Controls.Add(button21);
             Controls.Add(btnDiaSW);
             Controls.Add(btnSW);
+            Controls.Add(lbl_AdM);
             Controls.Add(label3);
             Controls.Add(lblTel);
             Controls.Add(lblDOA);
@@ -560,9 +563,9 @@
         private Button btn_Insert;
         private Button btn_Delete;
         private Button btn_Edit;
-        private Label lbl_ADno;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txt_AdM;
+        private TextBox txt_F1;
         private Label lbl_F1;
+        private Label lbl_AdM;
     }
 }
