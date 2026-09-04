@@ -7,6 +7,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>icons8-math-96.ico</ApplicationIcon>
+    <UseCompatibleTextRendering>false</UseCompatibleTextRendering>
+    <UseHighDpiImprovements>true</UseHighDpiImprovements>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>

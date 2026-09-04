@@ -65,11 +65,10 @@
             btn_Insert = new Button();
             btn_Delete = new Button();
             btn_Edit = new Button();
-            label5 = new Label();
             lbl_ADno = new Label();
             textBox1 = new TextBox();
-            label6 = new Label();
             textBox2 = new TextBox();
+            lbl_F1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvStu).BeginInit();
             SuspendLayout();
             // 
@@ -435,15 +434,6 @@
             btn_Edit.UseVisualStyleBackColor = false;
             btn_Edit.Click += btn_Edit_Click;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(0, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(50, 20);
-            label5.TabIndex = 66;
-            label5.Text = "label5";
-            // 
             // lbl_ADno
             // 
             lbl_ADno.Location = new Point(844, 765);
@@ -460,14 +450,6 @@
             textBox1.Size = new Size(245, 27);
             textBox1.TabIndex = 68;
             // 
-            // label6
-            // 
-            label6.Location = new Point(857, 119);
-            label6.Name = "label6";
-            label6.Size = new Size(110, 40);
-            label6.TabIndex = 69;
-            label6.Text = "ID Name";
-            // 
             // textBox2
             // 
             textBox2.Location = new Point(1007, 119);
@@ -475,16 +457,25 @@
             textBox2.Size = new Size(235, 27);
             textBox2.TabIndex = 70;
             // 
+            // lbl_F1
+            // 
+            lbl_F1.Font = new Font("Cambria Math", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_F1.Location = new Point(858, 119);
+            lbl_F1.Name = "lbl_F1";
+            lbl_F1.Size = new Size(110, 32);
+            lbl_F1.TabIndex = 2;
+            lbl_F1.Text = "First Name ";
+            lbl_F1.UseCompatibleTextRendering = true;
+            lbl_F1.Click += lblF_Click;
+            // 
             // DBForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1278, 920);
+            ClientSize = new Size(1278, 951);
             Controls.Add(textBox2);
-            Controls.Add(label6);
             Controls.Add(textBox1);
             Controls.Add(lbl_ADno);
-            Controls.Add(label5);
             Controls.Add(btn_Edit);
             Controls.Add(btn_Insert);
             Controls.Add(btn_Delete);
@@ -518,6 +509,7 @@
             Controls.Add(lblGrd);
             Controls.Add(lblGen);
             Controls.Add(lblL);
+            Controls.Add(lbl_F1);
             Controls.Add(lblF);
             Controls.Add(dgvStu);
             Controls.Add(btnA);
@@ -568,10 +560,9 @@
         private Button btn_Insert;
         private Button btn_Delete;
         private Button btn_Edit;
-        private Label label5;
         private Label lbl_ADno;
         private TextBox textBox1;
-        private Label label6;
         private TextBox textBox2;
+        private Label lbl_F1;
     }
 }
