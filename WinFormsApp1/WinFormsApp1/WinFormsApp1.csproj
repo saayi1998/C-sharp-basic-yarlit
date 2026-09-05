@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AdditionalFiles Remove="app.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="icons8-math-96.ico" />
   </ItemGroup>
 

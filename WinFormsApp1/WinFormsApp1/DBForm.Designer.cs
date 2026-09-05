@@ -74,9 +74,9 @@
             // 
             // btnC
             // 
-            btnC.Location = new Point(26, 29);
+            btnC.Location = new Point(35, 35);
             btnC.Name = "btnC";
-            btnC.Size = new Size(171, 56);
+            btnC.Size = new Size(133, 51);
             btnC.TabIndex = 0;
             btnC.Text = "Connect";
             btnC.UseVisualStyleBackColor = true;
@@ -84,10 +84,10 @@
             // 
             // btnA
             // 
-            btnA.BackColor = Color.Transparent;
-            btnA.Location = new Point(219, 29);
+            btnA.BackColor = Color.OrangeRed;
+            btnA.Location = new Point(193, 37);
             btnA.Name = "btnA";
-            btnA.Size = new Size(171, 56);
+            btnA.Size = new Size(133, 53);
             btnA.TabIndex = 0;
             btnA.Text = "All Students";
             btnA.UseVisualStyleBackColor = false;
@@ -125,13 +125,14 @@
             // 
             // btnSW
             // 
-            btnSW.Location = new Point(757, 29);
+            btnSW.BackColor = Color.RosyBrown;
+            btnSW.Location = new Point(672, 38);
             btnSW.Name = "btnSW";
-            btnSW.Size = new Size(125, 56);
+            btnSW.Size = new Size(132, 52);
             btnSW.TabIndex = 3;
             btnSW.Text = "Show";
             btnSW.UseMnemonic = false;
-            btnSW.UseVisualStyleBackColor = true;
+            btnSW.UseVisualStyleBackColor = false;
             btnSW.Click += btnSW_Click;
             // 
             // txtF
@@ -168,10 +169,10 @@
             // 
             // btnLG
             // 
-            btnLG.BackColor = SystemColors.GradientActiveCaption;
-            btnLG.Location = new Point(414, 29);
+            btnLG.BackColor = Color.LightSalmon;
+            btnLG.Location = new Point(352, 37);
             btnLG.Name = "btnLG";
-            btnLG.Size = new Size(152, 56);
+            btnLG.Size = new Size(133, 53);
             btnLG.TabIndex = 3;
             btnLG.Text = "Load Grade";
             btnLG.UseMnemonic = false;
@@ -200,13 +201,14 @@
             // 
             // button21
             // 
-            button21.Location = new Point(606, 29);
+            button21.BackColor = Color.RosyBrown;
+            button21.Location = new Point(510, 38);
             button21.Name = "button21";
-            button21.Size = new Size(132, 56);
+            button21.Size = new Size(132, 51);
             button21.TabIndex = 3;
             button21.Text = "Direct DB Show";
             button21.UseMnemonic = false;
-            button21.UseVisualStyleBackColor = true;
+            button21.UseVisualStyleBackColor = false;
             button21.Click += button21_Click;
             // 
             // lblGen
@@ -291,13 +293,14 @@
             // btnDiaSW
             // 
             btnDiaSW.AccessibleDescription = "";
-            btnDiaSW.Location = new Point(894, 29);
+            btnDiaSW.BackColor = Color.RosyBrown;
+            btnDiaSW.Location = new Point(827, 37);
             btnDiaSW.Name = "btnDiaSW";
-            btnDiaSW.Size = new Size(108, 56);
+            btnDiaSW.Size = new Size(125, 53);
             btnDiaSW.TabIndex = 3;
             btnDiaSW.Text = "PopUp Show";
             btnDiaSW.UseMnemonic = false;
-            btnDiaSW.UseVisualStyleBackColor = true;
+            btnDiaSW.UseVisualStyleBackColor = false;
             btnDiaSW.Click += btnDiaSW_Click;
             // 
             // lblDOA
@@ -404,7 +407,7 @@
             // 
             btn_Insert.BackColor = Color.Lime;
             btn_Insert.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Insert.Location = new Point(864, 822);
+            btn_Insert.Location = new Point(858, 822);
             btn_Insert.Name = "btn_Insert";
             btn_Insert.Size = new Size(172, 65);
             btn_Insert.TabIndex = 63;
@@ -428,9 +431,9 @@
             // 
             btn_Edit.BackColor = Color.PowderBlue;
             btn_Edit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Edit.Location = new Point(1070, 25);
+            btn_Edit.Location = new Point(1070, 35);
             btn_Edit.Name = "btn_Edit";
-            btn_Edit.Size = new Size(172, 65);
+            btn_Edit.Size = new Size(172, 51);
             btn_Edit.TabIndex = 65;
             btn_Edit.Text = "EDIT";
             btn_Edit.UseVisualStyleBackColor = false;
@@ -476,7 +479,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1278, 894);
+            ClientSize = new Size(1278, 908);
             Controls.Add(txt_F1);
             Controls.Add(txt_AdM);
             Controls.Add(btn_Edit);
