@@ -462,7 +462,7 @@ namespace WinFormsApp2
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-         
+
             try
             {
                 if (dgv_Student.CurrentRow == null)
@@ -495,6 +495,10 @@ namespace WinFormsApp2
                 MessageBox.Show("An error occurred while retrieving the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
+
+        private void lbl_Ln_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
