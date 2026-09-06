@@ -135,7 +135,28 @@ namespace WinFormsApp2
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgv_Grade.CurrentRow == null)
+                {
+                    MessageBox.Show("Please select a grade first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                string id = dgv_Grade.CurrentRow.Cells["id"].Value.ToString();
+                string gradeName = dgv_Grade.CurrentRow.Cells["grade_name"].Value.ToString();
+                string gradeGroup = dgv_Grade.CurrentRow.Cells["grade_group"].Value.ToString();
+                string gradeOrder = dgv_Grade.CurrentRow.Cells["grade_order"].Value.ToString();
+                string colour = dgv_Grade.CurrentRow.Cells["colour"].Value.ToString();
+
+
+                From_Edit_Grade2 f = new From_Edit_Grade2(id, gradeName, gradeGroup, gradeOrder, colour);
+                f.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)

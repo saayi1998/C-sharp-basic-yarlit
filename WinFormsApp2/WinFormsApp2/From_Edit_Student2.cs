@@ -208,8 +208,7 @@ namespace WinFormsApp2
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("An ereor occurred while connection to the database" + ex.Message);
-
+                MessageBox.Show("An error occurred while connection to the database" + ex.Message);
             }
             finally
             {

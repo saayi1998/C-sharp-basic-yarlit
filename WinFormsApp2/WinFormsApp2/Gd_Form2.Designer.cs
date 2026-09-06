@@ -46,6 +46,7 @@
             txt_Grg = new TextBox();
             txt_Gro = new TextBox();
             btn_Clear = new Button();
+            colorDialog1 = new ColorDialog();
             ((System.ComponentModel.ISupportInitialize)dgv_Grade).BeginInit();
             SuspendLayout();
             // 
@@ -258,5 +259,6 @@
         private TextBox txt_Grg;
         private TextBox txt_Gro;
         private Button btn_Clear;
+        private ColorDialog colorDialog1;
     }
 }
