@@ -96,6 +96,7 @@
             // 
             txt_Gid.Location = new Point(198, 75);
             txt_Gid.Name = "txt_Gid";
+            txt_Gid.ReadOnly = true;
             txt_Gid.Size = new Size(273, 27);
             txt_Gid.TabIndex = 18;
             // 

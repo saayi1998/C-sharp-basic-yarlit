@@ -19,6 +19,7 @@ namespace WinFormsApp2
         public From_Edit_Grade2(string id, string grade_name, string grade_group, string grade_order, string colour)
         {
             InitializeComponent();
+            LoadNextGradeId();
             this.id = id;
             this.grade_name = grade_name;
             this.grade_group = grade_group;
@@ -47,6 +48,25 @@ namespace WinFormsApp2
                 Color chosen = colorDialog1.Color;
                 selectedColourHex = ColorTranslator.ToHtml(chosen);
                 panel1.BackColor = chosen;
+            }
+        }
+
+        private void LoadNextGradeId()
+        {
+            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            using (MySqlConnection conn = new MySqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("SELECT IFNULL(MAX(id), 0) + 1 FROM grades", conn);
+                    object result = cmd.ExecuteScalar();
+                    txt_Gid.Text = result.ToString();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error generating grade ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

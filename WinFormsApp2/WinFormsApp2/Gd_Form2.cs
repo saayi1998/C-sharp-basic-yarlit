@@ -16,6 +16,7 @@ namespace WinFormsApp2
         public Gd_Form2()
         {
             InitializeComponent();
+            LoadNextGradeId();
         }
 
         private void btn_Allgrade_Click(object sender, EventArgs e)
@@ -38,6 +39,25 @@ namespace WinFormsApp2
             finally
             {
                 conn.Close();
+            }
+        }
+
+        private void LoadNextGradeId()
+        {
+            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            using (MySqlConnection conn = new MySqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("SELECT IFNULL(MAX(id), 0) + 1 FROM grades", conn);
+                    object result = cmd.ExecuteScalar();
+                    txt_Gid.Text = result.ToString();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error generating grade ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -88,7 +108,7 @@ namespace WinFormsApp2
 
         private void btn_Insert_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txt_Grn.Text))
+            if (string.IsNullOrWhiteSpace(txt_Grn.Text )) 
             {
                 MessageBox.Show("Please enter a grade name.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -101,7 +121,7 @@ namespace WinFormsApp2
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand($"INSERT INTO grades(grade_name, grade_group, grade_order, colour) " +
+                MySqlCommand cmd = new MySqlCommand($"insert into grades(grade_name, grade_group, grade_order, colour) " +
                     $"VALUES('{txt_Grn.Text}', '{txt_Grg.Text}', '{txt_Gro.Text}', '{selectedColourHex}')", conn);
 
                 string affectedRows = cmd.ExecuteNonQuery().ToString();
@@ -110,7 +130,6 @@ namespace WinFormsApp2
 
                 ClearFields();
 
-                btn_Allgrade_Click(sender, e); // refresh grid
             }
             catch (MySqlException ex)
             {
