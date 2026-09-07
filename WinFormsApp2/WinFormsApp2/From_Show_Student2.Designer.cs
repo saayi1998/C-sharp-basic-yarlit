@@ -72,6 +72,7 @@
             txt_Fn.Name = "txt_Fn";
             txt_Fn.Size = new Size(260, 27);
             txt_Fn.TabIndex = 18;
+            txt_Fn.TextChanged += txt_Fn_TextChanged;
             // 
             // txt_Sid
             // 

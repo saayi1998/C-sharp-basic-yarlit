@@ -2,6 +2,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Runtime.Intrinsics.X86;
@@ -15,6 +16,7 @@ namespace WinFormsApp2
 {
     public partial class DB_Form2 : Form
     {
+        string connString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString ?? string.Empty;
         public DB_Form2()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace WinFormsApp2
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+           
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -44,7 +46,7 @@ namespace WinFormsApp2
 
         private void LoadNextStudentId()
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+          
             using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 try
@@ -63,8 +65,7 @@ namespace WinFormsApp2
 
         private void LoadDropdowns()
         {
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 try
                 {
@@ -112,7 +113,7 @@ namespace WinFormsApp2
 
         private void btn_AllStudent_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+           
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -135,7 +136,8 @@ namespace WinFormsApp2
 
         private void btn_AllGradeLoad_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -171,7 +173,8 @@ namespace WinFormsApp2
 
         private void btn_Show_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -329,8 +332,8 @@ namespace WinFormsApp2
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=";
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            
+            MySqlConnection conn = new MySqlConnection(connString);
 
             try
             {
@@ -361,7 +364,7 @@ namespace WinFormsApp2
 
         private void btn_PopShow_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+           
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -395,7 +398,7 @@ namespace WinFormsApp2
 
         private void btn_DirectDBShow_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+          
             MySqlConnection conn = new MySqlConnection(connString);
 
             try

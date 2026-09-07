@@ -152,5 +152,10 @@ namespace WinFormsApp2
                 conn.Close();
             }
         }
+
+        private void txt_Fn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
