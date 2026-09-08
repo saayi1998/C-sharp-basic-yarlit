@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 
@@ -7,11 +8,16 @@ namespace WinFormsApp2
 {
     public partial class DB_Show2 : Form
     {
+        string connString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString ?? string.Empty;
         string studentId;
 
         public DB_Show2(string id)
         {
             InitializeComponent();
+            if (string.IsNullOrEmpty(connString))
+            {
+                MessageBox.Show("Connection string is not defined in the configuration file.", "Configuration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             this.studentId = id;
         }
 

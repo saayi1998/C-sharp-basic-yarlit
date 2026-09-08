@@ -69,6 +69,7 @@
             txt_Add = new TextBox();
             lbl_Gn = new Label();
             cmb_Gn = new ComboBox();
+            btn_Clear = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_Student).BeginInit();
             SuspendLayout();
             // 
@@ -455,11 +456,22 @@
             cmb_Gn.Size = new Size(260, 28);
             cmb_Gn.TabIndex = 6;
             // 
+            // btn_Clear
+            // 
+            btn_Clear.Location = new Point(998, 32);
+            btn_Clear.Name = "btn_Clear";
+            btn_Clear.Size = new Size(100, 43);
+            btn_Clear.TabIndex = 9;
+            btn_Clear.Text = "Clear";
+            btn_Clear.UseVisualStyleBackColor = true;
+            btn_Clear.Click += btn_Clear_Click;
+            // 
             // DB_Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1307, 888);
+            Controls.Add(btn_Clear);
             Controls.Add(txt_Add);
             Controls.Add(txt_Tel);
             Controls.Add(txt_Nic);
@@ -559,5 +571,6 @@
         private TextBox txt_Add;
         private Label lbl_Gn;
         private ComboBox cmb_Gn;
+        private Button btn_Clear;
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -12,6 +13,7 @@ namespace WinFormsApp2
 {
     public partial class From_Show_Student2 : Form
     {
+        string connString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString ?? string.Empty;
         string id;
         string fname;
         string lname;
@@ -29,6 +31,10 @@ namespace WinFormsApp2
         public From_Show_Student2(string id, string fname, string lname, string gender, string DOB, string DOA, string nic, string tel, string admission, string grade, string medium, string house, string family, string Address)
         {
             InitializeComponent();
+            if (string.IsNullOrEmpty(connString))
+            {
+                MessageBox.Show("Connection string is not defined in the configuration file.", "Configuration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             this.id = id;
             this.fname = fname;
             this.lname = lname;
@@ -59,6 +65,8 @@ namespace WinFormsApp2
                 rbn_Female.Checked = true;
             }
             txt_Nic.Text = nic;
+            dtp_Doa.Value = Convert.ToDateTime(DOA);
+            dtp_Dob.Value = Convert.ToDateTime(DOB);
             txt_Tel.Text = tel;
             txt_Add.Text = Address;
             txt_Adn.Text = admission;

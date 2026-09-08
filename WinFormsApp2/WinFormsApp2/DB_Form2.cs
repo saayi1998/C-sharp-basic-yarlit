@@ -20,6 +20,10 @@ namespace WinFormsApp2
         public DB_Form2()
         {
             InitializeComponent();
+            if (string.IsNullOrEmpty(connString))
+            {
+                MessageBox.Show("Connection string is not defined in the configuration file.", "Configuration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             txt_Sid.ReadOnly = true;
             LoadNextStudentId();
             LoadDropdowns();
@@ -27,7 +31,7 @@ namespace WinFormsApp2
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {
-           
+
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -46,7 +50,7 @@ namespace WinFormsApp2
 
         private void LoadNextStudentId()
         {
-          
+
             using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 try
@@ -113,7 +117,7 @@ namespace WinFormsApp2
 
         private void btn_AllStudent_Click(object sender, EventArgs e)
         {
-           
+
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -136,7 +140,7 @@ namespace WinFormsApp2
 
         private void btn_AllGradeLoad_Click(object sender, EventArgs e)
         {
-            
+
             //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
             try
@@ -173,7 +177,7 @@ namespace WinFormsApp2
 
         private void btn_Show_Click(object sender, EventArgs e)
         {
-            
+
             //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
             try
@@ -332,7 +336,7 @@ namespace WinFormsApp2
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            
+
             MySqlConnection conn = new MySqlConnection(connString);
 
             try
@@ -364,7 +368,7 @@ namespace WinFormsApp2
 
         private void btn_PopShow_Click(object sender, EventArgs e)
         {
-           
+
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -398,7 +402,7 @@ namespace WinFormsApp2
 
         private void btn_DirectDBShow_Click(object sender, EventArgs e)
         {
-          
+
             MySqlConnection conn = new MySqlConnection(connString);
 
             try
@@ -461,8 +465,32 @@ namespace WinFormsApp2
             {
                 conn.Close();
             }
+
+            ClearFields();
         }
 
+        private void ClearFields()
+        {
+            txt_Sid.Text = "";
+            txt_Fn.Text = "";
+            txt_Ln.Text = "";
+            txt_Nic.Text = "";
+            txt_Tel.Text = "";
+            txt_Add.Text = "";
+            txt_Adn.Text = "";
+            cmb_Med.Text = "";
+
+            rbn_Male.Checked = false;
+            rbn_Female.Checked = false;
+
+            dtp_Doa.Value = DateTime.Now;
+            dtp_Dob.Value = DateTime.Now;
+          
+            cmb_Gn.SelectedIndex = -1;
+            cmb_Hn.SelectedIndex = -1;
+            cmb_Fid.SelectedIndex = -1;
+        
+        }
         private void btn_Edit_Click(object sender, EventArgs e)
         {
 
@@ -502,6 +530,11 @@ namespace WinFormsApp2
         private void lbl_Ln_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Clear_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

@@ -62,21 +62,21 @@
             // 
             // txt_Ln
             // 
-            txt_Ln.Location = new Point(227, 195);
+            txt_Ln.Location = new Point(220, 148);
             txt_Ln.Name = "txt_Ln";
             txt_Ln.Size = new Size(260, 27);
             txt_Ln.TabIndex = 17;
             // 
             // txt_Fn
             // 
-            txt_Fn.Location = new Point(227, 147);
+            txt_Fn.Location = new Point(220, 100);
             txt_Fn.Name = "txt_Fn";
             txt_Fn.Size = new Size(260, 27);
             txt_Fn.TabIndex = 18;
             // 
             // txt_Sid
             // 
-            txt_Sid.Location = new Point(227, 100);
+            txt_Sid.Location = new Point(220, 53);
             txt_Sid.Name = "txt_Sid";
             txt_Sid.Size = new Size(260, 27);
             txt_Sid.TabIndex = 19;
@@ -84,7 +84,7 @@
             // lbl_Gender
             // 
             lbl_Gender.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Gender.Location = new Point(29, 248);
+            lbl_Gender.Location = new Point(22, 201);
             lbl_Gender.Name = "lbl_Gender";
             lbl_Gender.Size = new Size(146, 23);
             lbl_Gender.TabIndex = 12;
@@ -94,7 +94,7 @@
             // lbl_Gn
             // 
             lbl_Gn.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Gn.Location = new Point(29, 300);
+            lbl_Gn.Location = new Point(22, 253);
             lbl_Gn.Name = "lbl_Gn";
             lbl_Gn.Size = new Size(146, 23);
             lbl_Gn.TabIndex = 13;
@@ -104,7 +104,7 @@
             // lbl_Ln
             // 
             lbl_Ln.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Ln.Location = new Point(29, 194);
+            lbl_Ln.Location = new Point(22, 147);
             lbl_Ln.Name = "lbl_Ln";
             lbl_Ln.Size = new Size(146, 23);
             lbl_Ln.TabIndex = 14;
@@ -114,7 +114,7 @@
             // lbl_Fn
             // 
             lbl_Fn.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Fn.Location = new Point(29, 146);
+            lbl_Fn.Location = new Point(22, 99);
             lbl_Fn.Name = "lbl_Fn";
             lbl_Fn.Size = new Size(146, 23);
             lbl_Fn.TabIndex = 15;
@@ -124,7 +124,7 @@
             // lbl_Sid
             // 
             lbl_Sid.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Sid.Location = new Point(29, 100);
+            lbl_Sid.Location = new Point(22, 53);
             lbl_Sid.Name = "lbl_Sid";
             lbl_Sid.Size = new Size(146, 23);
             lbl_Sid.TabIndex = 16;
@@ -134,7 +134,7 @@
             // cmb_Gn
             // 
             cmb_Gn.FormattingEnabled = true;
-            cmb_Gn.Location = new Point(227, 295);
+            cmb_Gn.Location = new Point(220, 248);
             cmb_Gn.Name = "cmb_Gn";
             cmb_Gn.Size = new Size(260, 28);
             cmb_Gn.TabIndex = 11;
@@ -142,7 +142,7 @@
             // rbn_Female
             // 
             rbn_Female.AutoSize = true;
-            rbn_Female.Location = new Point(417, 247);
+            rbn_Female.Location = new Point(410, 200);
             rbn_Female.Name = "rbn_Female";
             rbn_Female.Size = new Size(78, 24);
             rbn_Female.TabIndex = 9;
@@ -153,7 +153,7 @@
             // rbn_Male
             // 
             rbn_Male.AutoSize = true;
-            rbn_Male.Location = new Point(231, 247);
+            rbn_Male.Location = new Point(224, 200);
             rbn_Male.Name = "rbn_Male";
             rbn_Male.Size = new Size(63, 24);
             rbn_Male.TabIndex = 10;
@@ -163,28 +163,28 @@
             // 
             // txt_Add
             // 
-            txt_Add.Location = new Point(775, 244);
+            txt_Add.Location = new Point(768, 197);
             txt_Add.Name = "txt_Add";
             txt_Add.Size = new Size(260, 27);
             txt_Add.TabIndex = 37;
             // 
             // txt_Tel
             // 
-            txt_Tel.Location = new Point(775, 195);
+            txt_Tel.Location = new Point(768, 148);
             txt_Tel.Name = "txt_Tel";
             txt_Tel.Size = new Size(260, 27);
             txt_Tel.TabIndex = 36;
             // 
             // txt_Nic
             // 
-            txt_Nic.Location = new Point(775, 147);
+            txt_Nic.Location = new Point(768, 100);
             txt_Nic.Name = "txt_Nic";
             txt_Nic.Size = new Size(260, 27);
             txt_Nic.TabIndex = 35;
             // 
             // txt_Adn
             // 
-            txt_Adn.Location = new Point(775, 96);
+            txt_Adn.Location = new Point(768, 49);
             txt_Adn.Name = "txt_Adn";
             txt_Adn.Size = new Size(260, 27);
             txt_Adn.TabIndex = 34;
@@ -192,7 +192,7 @@
             // lbl_Fid
             // 
             lbl_Fid.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Fid.Location = new Point(573, 400);
+            lbl_Fid.Location = new Point(566, 353);
             lbl_Fid.Name = "lbl_Fid";
             lbl_Fid.Size = new Size(146, 23);
             lbl_Fid.TabIndex = 32;
@@ -202,7 +202,7 @@
             // lbl_Hn
             // 
             lbl_Hn.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Hn.Location = new Point(573, 350);
+            lbl_Hn.Location = new Point(566, 303);
             lbl_Hn.Name = "lbl_Hn";
             lbl_Hn.Size = new Size(146, 23);
             lbl_Hn.TabIndex = 31;
@@ -212,7 +212,7 @@
             // lbl_Med
             // 
             lbl_Med.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Med.Location = new Point(573, 300);
+            lbl_Med.Location = new Point(566, 253);
             lbl_Med.Name = "lbl_Med";
             lbl_Med.Size = new Size(146, 23);
             lbl_Med.TabIndex = 30;
@@ -222,7 +222,7 @@
             // lbl_Add
             // 
             lbl_Add.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Add.Location = new Point(573, 244);
+            lbl_Add.Location = new Point(566, 197);
             lbl_Add.Name = "lbl_Add";
             lbl_Add.Size = new Size(146, 23);
             lbl_Add.TabIndex = 33;
@@ -232,7 +232,7 @@
             // lbl_Adn
             // 
             lbl_Adn.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Adn.Location = new Point(573, 95);
+            lbl_Adn.Location = new Point(566, 48);
             lbl_Adn.Name = "lbl_Adn";
             lbl_Adn.Size = new Size(146, 23);
             lbl_Adn.TabIndex = 29;
@@ -242,7 +242,7 @@
             // lbl_Tel
             // 
             lbl_Tel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Tel.Location = new Point(573, 199);
+            lbl_Tel.Location = new Point(566, 152);
             lbl_Tel.Name = "lbl_Tel";
             lbl_Tel.Size = new Size(146, 23);
             lbl_Tel.TabIndex = 28;
@@ -252,7 +252,7 @@
             // lbl_Nic
             // 
             lbl_Nic.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Nic.Location = new Point(573, 146);
+            lbl_Nic.Location = new Point(566, 99);
             lbl_Nic.Name = "lbl_Nic";
             lbl_Nic.Size = new Size(146, 23);
             lbl_Nic.TabIndex = 27;
@@ -262,7 +262,7 @@
             // lbl_Doa
             // 
             lbl_Doa.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Doa.Location = new Point(29, 402);
+            lbl_Doa.Location = new Point(22, 355);
             lbl_Doa.Name = "lbl_Doa";
             lbl_Doa.Size = new Size(177, 23);
             lbl_Doa.TabIndex = 26;
@@ -272,7 +272,7 @@
             // lbl_Dob
             // 
             lbl_Dob.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Dob.Location = new Point(29, 353);
+            lbl_Dob.Location = new Point(22, 306);
             lbl_Dob.Name = "lbl_Dob";
             lbl_Dob.Size = new Size(146, 23);
             lbl_Dob.TabIndex = 25;
@@ -283,7 +283,7 @@
             // 
             cmb_Med.FormattingEnabled = true;
             cmb_Med.Items.AddRange(new object[] { "Tamil", "English ", "Sinhala" });
-            cmb_Med.Location = new Point(775, 295);
+            cmb_Med.Location = new Point(768, 248);
             cmb_Med.Name = "cmb_Med";
             cmb_Med.Size = new Size(260, 28);
             cmb_Med.TabIndex = 24;
@@ -291,7 +291,7 @@
             // cmb_Fid
             // 
             cmb_Fid.FormattingEnabled = true;
-            cmb_Fid.Location = new Point(775, 397);
+            cmb_Fid.Location = new Point(768, 350);
             cmb_Fid.Name = "cmb_Fid";
             cmb_Fid.Size = new Size(260, 28);
             cmb_Fid.TabIndex = 23;
@@ -299,7 +299,7 @@
             // cmb_Hn
             // 
             cmb_Hn.FormattingEnabled = true;
-            cmb_Hn.Location = new Point(775, 345);
+            cmb_Hn.Location = new Point(768, 298);
             cmb_Hn.Name = "cmb_Hn";
             cmb_Hn.Size = new Size(260, 28);
             cmb_Hn.TabIndex = 22;
@@ -307,7 +307,7 @@
             // dtp_Doa
             // 
             dtp_Doa.Format = DateTimePickerFormat.Short;
-            dtp_Doa.Location = new Point(227, 398);
+            dtp_Doa.Location = new Point(220, 351);
             dtp_Doa.Name = "dtp_Doa";
             dtp_Doa.Size = new Size(264, 27);
             dtp_Doa.TabIndex = 21;
@@ -315,7 +315,7 @@
             // dtp_Dob
             // 
             dtp_Dob.Format = DateTimePickerFormat.Short;
-            dtp_Dob.Location = new Point(227, 353);
+            dtp_Dob.Location = new Point(220, 306);
             dtp_Dob.Name = "dtp_Dob";
             dtp_Dob.Size = new Size(264, 27);
             dtp_Dob.TabIndex = 20;
@@ -323,7 +323,7 @@
             // btn_Update
             // 
             btn_Update.BackColor = Color.RosyBrown;
-            btn_Update.Location = new Point(417, 458);
+            btn_Update.Location = new Point(410, 411);
             btn_Update.Name = "btn_Update";
             btn_Update.Size = new Size(281, 40);
             btn_Update.TabIndex = 38;
@@ -335,7 +335,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1064, 510);
+            ClientSize = new Size(1064, 477);
             Controls.Add(btn_Update);
             Controls.Add(txt_Add);
             Controls.Add(txt_Tel);
