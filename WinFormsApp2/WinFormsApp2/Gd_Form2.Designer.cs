@@ -171,9 +171,9 @@
             // 
             // btn_Color
             // 
-            btn_Color.Location = new Point(922, 294);
+            btn_Color.Location = new Point(1098, 294);
             btn_Color.Name = "btn_Color";
-            btn_Color.Size = new Size(141, 29);
+            btn_Color.Size = new Size(97, 29);
             btn_Color.TabIndex = 7;
             btn_Color.Text = "Pick Color";
             btn_Color.UseVisualStyleBackColor = true;
@@ -181,9 +181,9 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(1091, 294);
+            panel1.Location = new Point(922, 291);
             panel1.Name = "panel1";
-            panel1.Size = new Size(95, 29);
+            panel1.Size = new Size(159, 29);
             panel1.TabIndex = 9;
             // 
             // txt_Grg

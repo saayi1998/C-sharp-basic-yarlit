@@ -72,6 +72,9 @@ namespace WinFormsApp2
             txt_Add.Text = Address;
             txt_Adn.Text = admission;
 
+            dtp_Doa.Value = Convert.ToDateTime(DOA);
+            dtp_Dob.Value = Convert.ToDateTime(DOB);
+
             cmb_Gn.Text = grade;
             cmb_Fid.Text = family;
             cmb_Hn.Text = house;
@@ -80,8 +83,8 @@ namespace WinFormsApp2
 
             // --------------GRADE ID--------------------
 
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            //string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            MySqlConnection conn = new MySqlConnection(connString);
 
             try
             {
@@ -164,8 +167,8 @@ namespace WinFormsApp2
 
         private void LoadDropdowns()
         {
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+           // string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 try
                 {
@@ -200,13 +203,13 @@ namespace WinFormsApp2
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            //string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            MySqlConnection conn = new MySqlConnection(connString);
 
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand($"update students set admission_number='{txt_Adn.Text}',first_name='{txt_Fn.Text}',last_name='{txt_Ln.Text}',per_address='{txt_Add.Text}',nic_number='{txt_Nic.Text}',tele_number='{txt_Tel.Text}',grade_id='{cmb_Gn.SelectedValue}',house_id='{cmb_Hn.SelectedValue}',medium='{cmb_Med.Text}',family_id='{cmb_Fid.SelectedValue}' where id={this.id}", conn);
+                MySqlCommand cmd = new MySqlCommand($"update students set admission_number='{txt_Adn.Text}',first_name='{txt_Fn.Text}',last_name='{txt_Ln.Text}',per_address='{txt_Add.Text}',date_of_birth='{dtp_Dob.Value.ToString("yyyy-MM-dd")}',date_of_admission='{dtp_Doa.Value.ToString("yyyy-MM-dd")  }',nic_number='{txt_Nic.Text}',tele_number='{txt_Tel.Text}',grade_id='{cmb_Gn.SelectedValue}',house_id='{cmb_Hn.SelectedValue}',medium='{cmb_Med.Text}',family_id='{cmb_Fid.SelectedValue}' where id={this.id}", conn);
 
                 string affectedRows = cmd.ExecuteNonQuery().ToString();
                 MessageBox.Show("Update Successfully.Row affected" + affectedRows, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -82,11 +82,12 @@ namespace WinFormsApp2
                 txt_Grg.Text = dgv_Grade.CurrentRow.Cells["grade_group"].Value.ToString();
                 txt_Gro.Text = dgv_Grade.CurrentRow.Cells["grade_order"].Value.ToString();
 
-                string colourFromGrid = dgv_Grade.CurrentRow.Cells["colour"].Value.ToString();
-
+               
 
                 try
                 {
+                    string colourFromGrid = dgv_Grade.CurrentRow.Cells["colour"].Value.ToString();
+
                     Color loadedColor = ColorTranslator.FromHtml(colourFromGrid);
                     panel1.BackColor = loadedColor;
                     selectedColourHex = colourFromGrid;
@@ -193,6 +194,15 @@ namespace WinFormsApp2
                 }
 
                 string Gradeid = dgv_Grade.CurrentRow.Cells["id"].Value.ToString();
+                string gradeName = dgv_Grade.CurrentRow.Cells["grade_name"].Value.ToString();
+
+                DialogResult confirm = MessageBox.Show($"Are you sure you want to delete grade '{gradeName}' (ID: {Gradeid})?","Confirm Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                if (confirm != DialogResult.Yes)
+                {
+                    return; // user clicked No, cancel the delete
+                }
+
 
                 conn.Open();
 

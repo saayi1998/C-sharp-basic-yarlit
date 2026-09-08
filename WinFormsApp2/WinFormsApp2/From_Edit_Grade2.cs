@@ -16,6 +16,7 @@ namespace WinFormsApp2
         string grade_group;
         string grade_order;
         string colour;
+        private string selectedColourHex;
         public From_Edit_Grade2(string id, string grade_name, string grade_group, string grade_order, string colour)
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace WinFormsApp2
             this.grade_group = grade_group;
             this.grade_order = grade_order;
             this.colour = colour;
+            this.selectedColourHex = colour;
         }
 
         private void From_Edit_Grade2_Load(object sender, EventArgs e)
@@ -34,12 +36,12 @@ namespace WinFormsApp2
             txt_Grg.Text = grade_group;
             txt_Gro.Text = grade_order;
           
-            panel1.BackColor = ColorTranslator.FromHtml(colour);
+            panel1.BackColor = ColorTranslator.FromHtml(selectedColourHex);
             selectedColourHex = colour;
 
 
         }
-        private string selectedColourHex; // add this field near the top with the others
+        //private string selectedColourHex; // add this field near the top with the others
 
         private void btn_Color_Click(object sender, EventArgs e)
         {

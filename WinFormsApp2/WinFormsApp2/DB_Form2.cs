@@ -489,7 +489,9 @@ namespace WinFormsApp2
             cmb_Gn.SelectedIndex = -1;
             cmb_Hn.SelectedIndex = -1;
             cmb_Fid.SelectedIndex = -1;
-        
+
+            LoadNextStudentId();
+
         }
         private void btn_Edit_Click(object sender, EventArgs e)
         {
