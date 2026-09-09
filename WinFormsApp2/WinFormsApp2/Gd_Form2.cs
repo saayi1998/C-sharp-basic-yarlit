@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -12,6 +13,7 @@ namespace WinFormsApp2
     public partial class Gd_Form2 : Form
     {
         private string selectedColourHex = "#000000"; // holds the picked color's hex value
+        string connString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString ?? string.Empty;
 
         public Gd_Form2()
         {
@@ -21,7 +23,7 @@ namespace WinFormsApp2
 
         private void btn_Allgrade_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -44,7 +46,7 @@ namespace WinFormsApp2
 
         private void LoadNextGradeId()
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 try
@@ -109,7 +111,7 @@ namespace WinFormsApp2
 
         private void btn_Insert_Click(object sender, EventArgs e)
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
@@ -129,49 +131,6 @@ namespace WinFormsApp2
                 conn.Close();
             }
         }
-                //if (string.IsNullOrWhiteSpace(txt_Grn.Text )) 
-                //{
-                //    MessageBox.Show("Please enter a grade name.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return;
-                //}
-
-                //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-                //MySqlConnection conn = new MySqlConnection(connString);
-
-                //try
-                //{
-                //    conn.Open();
-
-                //    MySqlCommand cmd = new MySqlCommand($"insert into grades(grade_name, grade_group, grade_order, colour) " +
-                //        $"VALUES('{txt_Grn.Text}', '{txt_Grg.Text}', '{txt_Gro.Text}', '{selectedColourHex}')", conn);
-
-                //    string affectedRows = cmd.ExecuteNonQuery().ToString();
-
-                //    MessageBox.Show($"Inserted successfully. Row(s) affected: {affectedRows}", "Insert Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //    ClearFields();
-
-                //}
-                //catch (MySqlException ex)
-                //{
-                //    MessageBox.Show("An error occurred while inserting the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-                //finally
-                //{
-                //    conn.Close();
-                //}
-            
-
-        //private void ClearFields()
-        //{
-        //    txt_Gid.Text = "";
-        //    txt_Grn.Text = "";
-        //    txt_Grg.Text = "";
-        //    txt_Gro.Text = "";
-        //    panel1.BackColor = Color.White;
-        //    selectedColourHex = "#000000";
-        //    btn_Color.Enabled = true;
-        //}
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
@@ -202,7 +161,7 @@ namespace WinFormsApp2
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
 
             try

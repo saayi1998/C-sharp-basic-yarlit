@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -11,6 +12,7 @@ namespace WinFormsApp2
 {
     public partial class Form_Insert_Grade2 : Form
     {
+        string connString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString ?? string.Empty;
         string gradeid;
         string gradename;
         string gradegroup;
@@ -45,7 +47,7 @@ namespace WinFormsApp2
                 return;
             }
 
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             MySqlConnection conn = new MySqlConnection(connString);
 
             try

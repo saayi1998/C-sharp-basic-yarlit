@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -11,6 +12,7 @@ namespace WinFormsApp2
 {
     public partial class From_Edit_Grade2 : Form
     {
+        string connString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString ?? string.Empty;
         string id;
         string grade_name;
         string grade_group;
@@ -54,7 +56,7 @@ namespace WinFormsApp2
 
         private void LoadNextGradeId()
         {
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
             using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 try
@@ -73,8 +75,8 @@ namespace WinFormsApp2
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            //string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            MySqlConnection conn = new MySqlConnection(connString);
 
             try
             {
