@@ -45,7 +45,6 @@
             panel1 = new Panel();
             txt_Grg = new TextBox();
             txt_Gro = new TextBox();
-            btn_Clear = new Button();
             colorDialog1 = new ColorDialog();
             ((System.ComponentModel.ISupportInitialize)dgv_Grade).BeginInit();
             SuspendLayout();
@@ -200,22 +199,11 @@
             txt_Gro.Size = new Size(273, 27);
             txt_Gro.TabIndex = 3;
             // 
-            // btn_Clear
-            // 
-            btn_Clear.Location = new Point(229, 12);
-            btn_Clear.Name = "btn_Clear";
-            btn_Clear.Size = new Size(167, 49);
-            btn_Clear.TabIndex = 10;
-            btn_Clear.Text = "Clear";
-            btn_Clear.UseVisualStyleBackColor = true;
-            btn_Clear.Click += btn_Clear_Click;
-            // 
             // Gd_Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1216, 459);
-            Controls.Add(btn_Clear);
             Controls.Add(panel1);
             Controls.Add(btn_Color);
             Controls.Add(btn_Allgrade);
@@ -259,7 +247,6 @@
         private Panel panel1;
         private TextBox txt_Grg;
         private TextBox txt_Gro;
-        private Button btn_Clear;
         private ColorDialog colorDialog1;
     }
 }

@@ -72,7 +72,8 @@ namespace WinFormsApp2
             txt_Adn.Text = admission;
 
             cmb_Gn.Text = grade;
-            cmb_Fid.Text = family;
+            txt_Fid.Text = GetMobileByFamilyId(family);
+            //txt_Fid.Text = family;
             cmb_Hn.Text = house;
             cmb_Med.Text = medium;
 
@@ -125,10 +126,26 @@ namespace WinFormsApp2
                 }
 
                 //----------- FAMILY ID----------------
-                if (family != "")
-                {
-                    cmb_Fid.SelectedValue = Convert.ToInt32(family);
-                }
+                //string quer2 = "SELECT * FROM families";
+                //MySqlDataAdapter daa = new MySqlDataAdapter(quer2, conn);
+                //DataTable dtt = new DataTable();
+                //daa.Fill(dtt);
+
+                //cmb_Fid.DataSource = dtt;
+                //// what user sees
+                //cmb_Fid.DisplayMember = "mobile_number";
+                //// hidden value
+                //cmb_Fid.ValueMember = "id";
+                //// what user sees
+                //cmb_Hn.DisplayMember = "house_name";
+                //// hidden value
+                //cmb_Hn.ValueMember = "id";
+
+
+                //if (family != "")
+                //{
+                //    cmb_Fid.SelectedValue = Convert.ToInt32(family);
+                //}
 
                 //-------------------MEDIUM-------------------
                 if (medium != "")
@@ -159,6 +176,29 @@ namespace WinFormsApp2
             {
                 conn.Close();
             }
+        }
+
+        private string GetMobileByFamilyId(string familyId)
+        {
+            string mobile = string.Empty;
+
+            using (MySqlConnection conn = new MySqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("SELECT mobile_number FROM families WHERE id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", familyId);
+                    object result = cmd.ExecuteScalar();
+                    mobile = result != null ? result.ToString() : string.Empty;
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error fetching guardian mobile number: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return mobile;
         }
 
         private void txt_Fn_TextChanged(object sender, EventArgs e)

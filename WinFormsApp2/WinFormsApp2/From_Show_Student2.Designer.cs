@@ -53,10 +53,10 @@
             lbl_Doa = new Label();
             lbl_Dob = new Label();
             cmb_Med = new ComboBox();
-            cmb_Fid = new ComboBox();
             cmb_Hn = new ComboBox();
             dtp_Doa = new DateTimePicker();
             dtp_Dob = new DateTimePicker();
+            txt_Fid = new TextBox();
             SuspendLayout();
             // 
             // txt_Ln
@@ -194,9 +194,9 @@
             lbl_Fid.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl_Fid.Location = new Point(573, 400);
             lbl_Fid.Name = "lbl_Fid";
-            lbl_Fid.Size = new Size(146, 23);
+            lbl_Fid.Size = new Size(174, 23);
             lbl_Fid.TabIndex = 32;
-            lbl_Fid.Text = "Family ID";
+            lbl_Fid.Text = "Guardian Number";
             lbl_Fid.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lbl_Hn
@@ -288,14 +288,6 @@
             cmb_Med.Size = new Size(260, 28);
             cmb_Med.TabIndex = 24;
             // 
-            // cmb_Fid
-            // 
-            cmb_Fid.FormattingEnabled = true;
-            cmb_Fid.Location = new Point(775, 397);
-            cmb_Fid.Name = "cmb_Fid";
-            cmb_Fid.Size = new Size(260, 28);
-            cmb_Fid.TabIndex = 23;
-            // 
             // cmb_Hn
             // 
             cmb_Hn.FormattingEnabled = true;
@@ -320,12 +312,20 @@
             dtp_Dob.Size = new Size(264, 27);
             dtp_Dob.TabIndex = 20;
             // 
+            // txt_Fid
+            // 
+            txt_Fid.Location = new Point(775, 396);
+            txt_Fid.Name = "txt_Fid";
+            txt_Fid.Size = new Size(260, 27);
+            txt_Fid.TabIndex = 36;
+            // 
             // From_Show_Student2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 469);
             Controls.Add(txt_Add);
+            Controls.Add(txt_Fid);
             Controls.Add(txt_Tel);
             Controls.Add(txt_Nic);
             Controls.Add(txt_Adn);
@@ -339,7 +339,6 @@
             Controls.Add(lbl_Doa);
             Controls.Add(lbl_Dob);
             Controls.Add(cmb_Med);
-            Controls.Add(cmb_Fid);
             Controls.Add(cmb_Hn);
             Controls.Add(dtp_Doa);
             Controls.Add(dtp_Dob);
@@ -355,6 +354,7 @@
             Controls.Add(rbn_Female);
             Controls.Add(rbn_Male);
             Name = "From_Show_Student2";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "From_Show_Student";
             Load += From_Show_Student_Load;
             ResumeLayout(false);
@@ -388,9 +388,9 @@
         private Label lbl_Doa;
         private Label lbl_Dob;
         private ComboBox cmb_Med;
-        private ComboBox cmb_Fid;
         private ComboBox cmb_Hn;
         private DateTimePicker dtp_Doa;
         private DateTimePicker dtp_Dob;
+        private TextBox txt_Fid;
     }
 }

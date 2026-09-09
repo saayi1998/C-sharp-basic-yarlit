@@ -37,7 +37,6 @@ namespace WinFormsApp2
             txt_Gro.Text = grade_order;
           
             panel1.BackColor = ColorTranslator.FromHtml(selectedColourHex);
-            selectedColourHex = colour;
 
 
         }

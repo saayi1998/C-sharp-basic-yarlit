@@ -64,6 +64,11 @@ namespace WinFormsApp2
                     txt_Add.Text = row["per_address"].ToString();
                     txt_Adn.Text = row["admission_number"].ToString();
 
+                    //txt_Fid.Text = row["family_id"].ToString();
+                    //txt_Fid.Text = GetMobileByFamilyId(txt_Fid.Text);
+                    string familyId = row["family_id"].ToString();
+                    txt_Fid.Text = GetMobileByFamilyId(familyId);
+
                     //----------Load grades into ComboBox------------
                     string gradeQuery = "SELECT id, grade_name FROM grades";
                     MySqlDataAdapter gradeAdapter = new MySqlDataAdapter(gradeQuery, conn);
@@ -99,19 +104,19 @@ namespace WinFormsApp2
                     cmb_Med.Text = row["medium"] != DBNull.Value ? row["medium"].ToString() : "N/A";
 
                     //-----------------Load Families into ComboBox-----------------
-                    string familyQuery = "SELECT id FROM families";
-                    MySqlDataAdapter familyAdapter = new MySqlDataAdapter(familyQuery, conn);
-                    DataTable familyTable = new DataTable();
-                    familyAdapter.Fill(familyTable);
+                    //string familyQuery = "SELECT id FROM families";
+                    //MySqlDataAdapter familyAdapter = new MySqlDataAdapter(familyQuery, conn);
+                    //DataTable familyTable = new DataTable();
+                    //familyAdapter.Fill(familyTable);
 
-                    cmb_Fid.DataSource = familyTable;
-                    cmb_Fid.DisplayMember = "id";
-                    cmb_Fid.ValueMember = "id";
+                    //cmb_Fid.DataSource = familyTable;
+                    //cmb_Fid.DisplayMember = "id";
+                    //cmb_Fid.ValueMember = "id";
 
-                    if (row["family_id"] != DBNull.Value)
-                    {
-                        cmb_Fid.SelectedValue = Convert.ToInt32(row["family_id"]);
-                    }
+                    //if (row["family_id"] != DBNull.Value)
+                    //{
+                    //    cmb_Fid.SelectedValue = Convert.ToInt32(row["family_id"]);
+                    //}
 
                     //-----------------Date of Birth-----------------
                     dtp_Dob.Value = row["date_of_birth"] != DBNull.Value
@@ -129,5 +134,30 @@ namespace WinFormsApp2
                 }
             }
         }
+
+            private string GetMobileByFamilyId(string familyId)
+            {
+                string mobile = string.Empty;
+
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    try
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand("SELECT mobile_number FROM families WHERE id = @id", conn);
+                        cmd.Parameters.AddWithValue("@id", familyId);
+                        object result = cmd.ExecuteScalar();
+                        mobile = result != null ? result.ToString() : string.Empty;
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Error fetching guardian mobile number: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                return mobile;
+            }
+        
+    
     }
 }

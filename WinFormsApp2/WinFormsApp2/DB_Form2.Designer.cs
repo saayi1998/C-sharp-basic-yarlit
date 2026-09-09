@@ -45,7 +45,6 @@
             dtp_Dob = new DateTimePicker();
             dtp_Doa = new DateTimePicker();
             cmb_Hn = new ComboBox();
-            cmb_Fid = new ComboBox();
             cmb_Med = new ComboBox();
             lbl_Sid = new Label();
             lbl_Fn = new Label();
@@ -70,6 +69,7 @@
             lbl_Gn = new Label();
             cmb_Gn = new ComboBox();
             btn_Clear = new Button();
+            txt_Fid = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgv_Student).BeginInit();
             SuspendLayout();
             // 
@@ -241,14 +241,6 @@
             cmb_Hn.Size = new Size(260, 28);
             cmb_Hn.TabIndex = 6;
             // 
-            // cmb_Fid
-            // 
-            cmb_Fid.FormattingEnabled = true;
-            cmb_Fid.Location = new Point(1035, 777);
-            cmb_Fid.Name = "cmb_Fid";
-            cmb_Fid.Size = new Size(260, 28);
-            cmb_Fid.TabIndex = 6;
-            // 
             // cmb_Med
             // 
             cmb_Med.FormattingEnabled = true;
@@ -384,9 +376,9 @@
             lbl_Fid.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl_Fid.Location = new Point(833, 782);
             lbl_Fid.Name = "lbl_Fid";
-            lbl_Fid.Size = new Size(146, 23);
+            lbl_Fid.Size = new Size(177, 23);
             lbl_Fid.TabIndex = 7;
-            lbl_Fid.Text = "Family ID";
+            lbl_Fid.Text = "Guardian Number";
             lbl_Fid.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txt_Sid
@@ -466,6 +458,13 @@
             btn_Clear.UseVisualStyleBackColor = true;
             btn_Clear.Click += btn_Clear_Click;
             // 
+            // txt_Fid
+            // 
+            txt_Fid.Location = new Point(1035, 778);
+            txt_Fid.Name = "txt_Fid";
+            txt_Fid.Size = new Size(260, 27);
+            txt_Fid.TabIndex = 8;
+            // 
             // DB_Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -474,6 +473,7 @@
             Controls.Add(btn_Clear);
             Controls.Add(txt_Add);
             Controls.Add(txt_Tel);
+            Controls.Add(txt_Fid);
             Controls.Add(txt_Nic);
             Controls.Add(txt_Adn);
             Controls.Add(txt_Ln);
@@ -495,7 +495,6 @@
             Controls.Add(lbl_Sid);
             Controls.Add(cmb_Gn);
             Controls.Add(cmb_Med);
-            Controls.Add(cmb_Fid);
             Controls.Add(cmb_Hn);
             Controls.Add(dtp_Doa);
             Controls.Add(dtp_Dob);
@@ -514,6 +513,7 @@
             Controls.Add(btn_AllStudent);
             Controls.Add(btn_Connect);
             Name = "DB_Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DB_Form2";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgv_Student).EndInit();
@@ -547,7 +547,6 @@
         private MaskedTextBox maskedTextBox6;
         private MaskedTextBox maskedTextBox7;
         private ComboBox cmb_Hn;
-        private ComboBox cmb_Fid;
         private ComboBox cmb_Med;
         private Label lbl_Sid;
         private Label lbl_Fn;
@@ -572,5 +571,6 @@
         private Label lbl_Gn;
         private ComboBox cmb_Gn;
         private Button btn_Clear;
+        private TextBox txt_Fid;
     }
 }

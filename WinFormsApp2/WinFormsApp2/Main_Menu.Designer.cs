@@ -76,6 +76,7 @@
             Controls.Add(btn_Grade);
             Controls.Add(btn_Student);
             Name = "Main_Menu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Main_Menu";
             ResumeLayout(false);
         }

@@ -91,13 +91,13 @@ namespace WinFormsApp2
                     cmb_Hn.DisplayMember = "house_name";
                     cmb_Hn.ValueMember = "id";
 
-                    // FAMILY ID
-                    MySqlDataAdapter daFamily = new MySqlDataAdapter("SELECT * FROM families", conn);
-                    DataTable dtFamily = new DataTable();
-                    daFamily.Fill(dtFamily);
-                    cmb_Fid.DataSource = dtFamily;
-                    cmb_Fid.DisplayMember = "family_name"; // adjust to your actual column name
-                    cmb_Fid.ValueMember = "id";
+                    //// FAMILY ID
+                    //MySqlDataAdapter daFamily = new MySqlDataAdapter("SELECT * FROM families", conn);
+                    //DataTable dtFamily = new DataTable();
+                    //daFamily.Fill(dtFamily);
+                    //cmb_Fid.DataSource = dtFamily;
+                    //cmb_Fid.DisplayMember = "family_name"; // adjust to your actual column name
+                    //cmb_Fid.ValueMember = "id";
                 }
                 catch (MySqlException ex)
                 {
@@ -242,7 +242,7 @@ namespace WinFormsApp2
                 cmb_Hn.SelectedValue = house;
 
                 string family = dgv_Student.CurrentRow.Cells["family_id"].Value.ToString();
-                cmb_Fid.SelectedValue = family;
+                txt_Fid.Text = GetMobileByFamilyId(family);
 
                 string medium = dgv_Student.CurrentRow.Cells["medium"].Value.ToString();
                 cmb_Med.SelectedValue = medium;
@@ -293,23 +293,25 @@ namespace WinFormsApp2
                 }
 
 
-                // ---------------------FAMILY ID---------------------------
-                string queryyyy = "SELECT * FROM families";
-                MySqlDataAdapter daaa = new MySqlDataAdapter(queryyyy, conn);
-                DataTable dttt = new DataTable();
-                daaa.Fill(dttt);
+                //---------------------FAMILY ID-------------------------- -
+          
+                
+                //string queryyyy = "SELECT * FROM families";
+                //MySqlDataAdapter daaa = new MySqlDataAdapter(queryyyy, conn);
+                //DataTable dttt = new DataTable();
+                //daaa.Fill(dttt);
 
-                cmb_Fid.DataSource = dttt;
-                // what user sees
-                cmb_Fid.DisplayMember = "family_name";
-                // hidden value
-                cmb_Fid.ValueMember = "id";
+                //txt_Fid.DataSource = dttt;
+                //// what user sees
+                //txt_Fid.DisplayMember = "mobile_number";
+                //// hidden value
+                //txt_Fid.ValueMember = "id";
 
 
-                if (family != "")
-                {
-                    cmb_Fid.SelectedValue = Convert.ToInt32(family);
-                }
+                //if (family != "")
+                //{
+                //    txt_Fid.Text = family;
+                //}
 
 
                 // ---------------------MEDIUM---------------------------
@@ -334,6 +336,29 @@ namespace WinFormsApp2
             }
         }
 
+        private string GetMobileByFamilyId(string familyId)
+        {
+            string mobile = string.Empty;
+
+            using (MySqlConnection conn = new MySqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("SELECT mobile_number FROM families WHERE id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", familyId);
+                    object result = cmd.ExecuteScalar();
+                    mobile = result != null ? result.ToString() : string.Empty;
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error fetching guardian mobile number: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return mobile;
+        }
+
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
@@ -351,8 +376,25 @@ namespace WinFormsApp2
 
                 conn.Open();
 
+                // 1. Get the family_id of the selected student
+                MySqlCommand getFamilyCmd = new MySqlCommand($"SELECT family_id FROM students WHERE id='{studentId}'", conn);
+
+                object familyResult = getFamilyCmd.ExecuteScalar();
+                string familyId = familyResult != null ? familyResult.ToString() : "";
+
+                // 2. Delete the student
                 MySqlCommand cmd = new MySqlCommand($"DELETE FROM students WHERE id = '{studentId}'", conn);
+
                 string affectedRows = cmd.ExecuteNonQuery().ToString();
+
+                // 3. Delete the family record created for this student
+
+                if (!string.IsNullOrEmpty(familyId))
+                {
+                    MySqlCommand familyCmd = new MySqlCommand($"DELETE FROM families WHERE id='{familyId}'",conn);
+
+                    familyCmd.ExecuteNonQuery();
+                }
 
                 MessageBox.Show($"Deleted successfully. Row(s) affected: {affectedRows}", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -438,35 +480,79 @@ namespace WinFormsApp2
 
         private void btn_Insert_Click(object sender, EventArgs e)
         {
-            if (cmb_Gn.SelectedValue == null || cmb_Hn.SelectedValue == null || cmb_Fid.SelectedValue == null)
-            {
-                MessageBox.Show("Please select Grade, House, and Family before inserting.", "Missing Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
             try
             {
-                conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand($"INSERT INTO students(id,first_name, last_name, gender, grade_id,date_of_birth,date_of_admission,admission_number,nic_number,tele_number,per_address,medium,house_id,family_id) " + $"VALUES('{txt_Sid.Text}','{txt_Fn.Text}', '{txt_Ln.Text}', '{(rbn_Male.Checked ? "M" : "F")}', '{cmb_Gn.SelectedValue}', '{dtp_Dob.Value.ToString("yyyy-MM-dd")}', '{dtp_Doa.Value.ToString("yyyy-MM-dd")}', '{txt_Adn.Text}', '{txt_Nic.Text}', '{txt_Tel.Text}', '{txt_Add.Text}','{cmb_Med.Text}', '{cmb_Hn.SelectedValue}', '{cmb_Fid.SelectedValue}')", conn);
-
-                string affectedRows = cmd.ExecuteNonQuery().ToString();
-
-                MessageBox.Show($"Inserted successfully. Row(s) affected: {affectedRows}", "Insert Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                From_Insert_Student2 f = new From_Insert_Student2();
+                f.ShowDialog();
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while inserting the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
+                MessageBox.Show("Error opening insert form: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
 
-            ClearFields();
+            //MySqlConnection conn = new MySqlConnection(connString);
+            //try
+            //{
+
+            //    string id = dgv_Student.CurrentRow.Cells["id"].Value.ToString();
+            //    string fname = dgv_Student.CurrentRow.Cells["first_name"].Value.ToString();
+            //    string lname = dgv_Student.CurrentRow.Cells["last_name"].Value.ToString();
+            //    string gender = dgv_Student.CurrentRow.Cells["gender"].Value.ToString();
+            //    string DOB = Convert.ToDateTime(dgv_Student.CurrentRow.Cells["date_of_birth"].Value).ToString("yyyy-MM-dd");
+            //    string DOA = Convert.ToDateTime(dgv_Student.CurrentRow.Cells["date_of_admission"].Value).ToString("yyyy-MM-dd");
+            //    string nic = dgv_Student.CurrentRow.Cells["nic_number"].Value.ToString();
+            //    string tel = dgv_Student.CurrentRow.Cells["tele_number"].Value.ToString();
+            //    string address = dgv_Student.CurrentRow.Cells["per_address"].Value.ToString();
+            //    string grade = dgv_Student.CurrentRow.Cells["grade_id"].Value.ToString();
+            //    string family = dgv_Student.CurrentRow.Cells["family_id"].Value.ToString();
+            //    string house = dgv_Student.CurrentRow.Cells["house_id"].Value.ToString();
+            //    string admission = dgv_Student.CurrentRow.Cells["admission_number"].Value.ToString();
+            //    string medium = dgv_Student.CurrentRow.Cells["medium"].Value.ToString();
+
+
+            //    From_Insert_Student2 f = new From_Insert_Student2(id, fname, lname, gender, DOB, DOA, nic, tel, admission, grade, medium, house, family, address);
+            //    f.ShowDialog();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("connection error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //}
+
+
+            //if (cmb_Gn.SelectedValue == null || cmb_Hn.SelectedValue == null )
+            //{
+            //    MessageBox.Show("Please select Grade, House, and Family before inserting.", "Missing Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+            //string connectionString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //MySqlConnection conn = new MySqlConnection(connectionString);
+
+            //try
+            //{
+            //    conn.Open();
+
+            //    MySqlCommand cmd = new MySqlCommand($"INSERT INTO students(id,first_name, last_name, gender, grade_id,date_of_birth,date_of_admission,admission_number,nic_number,tele_number,per_address,medium,house_id,family_id) " + $"VALUES('{txt_Sid.Text}','{txt_Fn.Text}', '{txt_Ln.Text}', '{(rbn_Male.Checked ? "M" : "F")}', '{cmb_Gn.SelectedValue}', '{dtp_Dob.Value.ToString("yyyy-MM-dd")}', '{dtp_Doa.Value.ToString("yyyy-MM-dd")}', '{txt_Adn.Text}', '{txt_Nic.Text}', '{txt_Tel.Text}', '{txt_Add.Text}','{cmb_Med.Text}', '{cmb_Hn.SelectedValue}', '{txt_Fid.Text}')", conn);
+
+            //    string affectedRows = cmd.ExecuteNonQuery().ToString();
+
+            //    MessageBox.Show($"Inserted successfully. Row(s) affected: {affectedRows}", "Insert Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //catch (MySqlException ex)
+            //{
+            //    MessageBox.Show("An error occurred while inserting the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+
+            //ClearFields();
         }
 
         private void ClearFields()
@@ -476,9 +562,11 @@ namespace WinFormsApp2
             txt_Ln.Text = "";
             txt_Nic.Text = "";
             txt_Tel.Text = "";
+            txt_Fid.Text = "";
             txt_Add.Text = "";
             txt_Adn.Text = "";
             cmb_Med.Text = "";
+
 
             rbn_Male.Checked = false;
             rbn_Female.Checked = false;
@@ -488,7 +576,7 @@ namespace WinFormsApp2
           
             cmb_Gn.SelectedIndex = -1;
             cmb_Hn.SelectedIndex = -1;
-            cmb_Fid.SelectedIndex = -1;
+            
 
             LoadNextStudentId();
 
