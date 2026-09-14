@@ -9,6 +9,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Runtime.Versioning;
 using System.Text;
 using System.Windows.Forms;
+using WinFormsApp2.DAL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
@@ -31,24 +32,12 @@ namespace WinFormsApp2
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {
-
-            MySqlConnection conn = new MySqlConnection(connString);
-            try
-            {
-                conn.Open();
-                MessageBox.Show("Conncection Successful", "Connection Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            StudentDAL studentDAL = new StudentDAL();
+            studentDAL.studentConnect();
         }
 
-  
+        
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -56,53 +45,22 @@ namespace WinFormsApp2
 
         private void btn_AllStudent_Click(object sender, EventArgs e)
         {
-
-            MySqlConnection conn = new MySqlConnection(connString);
-            try
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from students", conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dgv_Student.DataSource = dt;
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("An error occurred while accessing the database: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            StudentDAL studentDAL = new StudentDAL();
+            DataTable dt = studentDAL.GetAll();
+            dgv_Student.DataSource = dt;
         }
 
+        
         private void btn_AllGradeLoad_Click(object sender, EventArgs e)
         {
+            StudentDAL studentDAL = new StudentDAL();
+            DataTable dt = studentDAL.GetAllGrades();
 
-            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
-            MySqlConnection conn = new MySqlConnection(connString);
-            try
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from grades", conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                cmb_Gn.DataSource = dt;
-                cmb_Gn.DisplayMember = "grade_name"; // column showing grade name in the dropdown
-                cmb_Gn.ValueMember = "id";           // primary key column of the grades table
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("An error occurred while accessing the database: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            cmb_Gn.DataSource = dt;
+            cmb_Gn.DisplayMember = "grade_name";
+            cmb_Gn.ValueMember = "id";
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -232,26 +190,6 @@ namespace WinFormsApp2
                 }
 
 
-                //---------------------FAMILY ID-------------------------- -
-          
-                
-                //string queryyyy = "SELECT * FROM families";
-                //MySqlDataAdapter daaa = new MySqlDataAdapter(queryyyy, conn);
-                //DataTable dttt = new DataTable();
-                //daaa.Fill(dttt);
-
-                //txt_Fid.DataSource = dttt;
-                //// what user sees
-                //txt_Fid.DisplayMember = "mobile_number";
-                //// hidden value
-                //txt_Fid.ValueMember = "id";
-
-
-                //if (family != "")
-                //{
-                //    txt_Fid.Text = family;
-                //}
-
 
                 // ---------------------MEDIUM---------------------------
 
@@ -350,72 +288,66 @@ namespace WinFormsApp2
         private void btn_PopShow_Click(object sender, EventArgs e)
         {
 
-            MySqlConnection conn = new MySqlConnection(connString);
             try
             {
+                if (dgv_Student.CurrentRow == null)
+                {
+                    MessageBox.Show("No records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
                 string id = dgv_Student.CurrentRow.Cells["id"].Value.ToString();
-                string fname = dgv_Student.CurrentRow.Cells["first_name"].Value.ToString();
-                string lname = dgv_Student.CurrentRow.Cells["last_name"].Value.ToString();
-                string gender = dgv_Student.CurrentRow.Cells["gender"].Value.ToString();
-                string DOB = Convert.ToDateTime(dgv_Student.CurrentRow.Cells["date_of_birth"].Value).ToString("yyyy-MM-dd");
-                string DOA = Convert.ToDateTime(dgv_Student.CurrentRow.Cells["date_of_admission"].Value).ToString("yyyy-MM-dd");
-                string nic = dgv_Student.CurrentRow.Cells["nic_number"].Value.ToString();
-                string tel = dgv_Student.CurrentRow.Cells["tele_number"].Value.ToString();
-                string address = dgv_Student.CurrentRow.Cells["per_address"].Value.ToString();
-                string grade = dgv_Student.CurrentRow.Cells["grade_id"].Value.ToString();
-                string family = dgv_Student.CurrentRow.Cells["family_id"].Value.ToString();
-                string house = dgv_Student.CurrentRow.Cells["house_id"].Value.ToString();
-                string admission = dgv_Student.CurrentRow.Cells["admission_number"].Value.ToString();
-                string medium = dgv_Student.CurrentRow.Cells["medium"].Value.ToString();
 
+                StudentDAL studentDAL = new StudentDAL();
+                DataTable dt = studentDAL.GetById(id);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Student not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                DataRow row = dt.Rows[0];
+
+                string fname = row["first_name"].ToString();
+                string lname = row["last_name"].ToString();
+                string gender = row["gender"].ToString();
+                string DOB = Convert.ToDateTime(row["date_of_birth"]).ToString("yyyy-MM-dd");
+                string DOA = Convert.ToDateTime(row["date_of_admission"]).ToString("yyyy-MM-dd");
+                string nic = row["nic_number"].ToString();
+                string tel = row["tele_number"].ToString();
+                string address = row["per_address"].ToString();
+                string grade = row["grade_id"].ToString();
+                string family = row["family_id"].ToString();
+                string house = row["house_id"].ToString();
+                string admission = row["admission_number"].ToString();
+                string medium = row["medium"].ToString();
 
                 From_Show_Student2 f = new From_Show_Student2(id, fname, lname, gender, DOB, DOA, nic, tel, admission, grade, medium, house, family, address);
                 f.ShowDialog();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("connection error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
         private void btn_DirectDBShow_Click(object sender, EventArgs e)
         {
-
-            MySqlConnection conn = new MySqlConnection(connString);
-
             try
             {
-
                 string id = dgv_Student.CurrentRow.Cells["id"].Value.ToString();
-                string fname = dgv_Student.CurrentRow.Cells["first_name"].Value.ToString();
-                string lname = dgv_Student.CurrentRow.Cells["last_name"].Value.ToString();
-                string gender = dgv_Student.CurrentRow.Cells["gender"].Value.ToString();
-                string DOB = Convert.ToDateTime(dgv_Student.CurrentRow.Cells["date_of_birth"].Value).ToString("yyyy-MM-dd");
-                string DOA = Convert.ToDateTime(dgv_Student.CurrentRow.Cells["date_of_admission"].Value).ToString("yyyy-MM-dd");
-                string nic = dgv_Student.CurrentRow.Cells["nic_number"].Value.ToString();
-                string tel = dgv_Student.CurrentRow.Cells["tele_number"].Value.ToString();
-                string address = dgv_Student.CurrentRow.Cells["per_address"].Value.ToString();
-                string grade = dgv_Student.CurrentRow.Cells["grade_id"].Value.ToString();
-                string family = dgv_Student.CurrentRow.Cells["family_id"].Value.ToString();
-                string house = dgv_Student.CurrentRow.Cells["house_id"].Value.ToString();
-                string admission = dgv_Student.CurrentRow.Cells["admission_number"].Value.ToString();
-                string medium = dgv_Student.CurrentRow.Cells["medium"].Value.ToString();
-
-
                 DB_Show2 ff = new DB_Show2(id);
                 ff.ShowDialog();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("connection error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
 
         }
+
+        
 
         private void btn_Insert_Click(object sender, EventArgs e)
         {

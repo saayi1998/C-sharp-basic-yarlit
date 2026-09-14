@@ -25,7 +25,7 @@ namespace WinFormsApp2
         {
             txt_Sid.Text = studentId;
 
-            string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
+            //string connString = "Server=localhost;Port=3307;Database=school;Uid=root;Pwd=;";
 
             using (MySqlConnection conn = new MySqlConnection(connString))
             {
@@ -103,21 +103,6 @@ namespace WinFormsApp2
                     //-------------Load Medium-------------
                     cmb_Med.Text = row["medium"] != DBNull.Value ? row["medium"].ToString() : "N/A";
 
-                    //-----------------Load Families into ComboBox-----------------
-                    //string familyQuery = "SELECT id FROM families";
-                    //MySqlDataAdapter familyAdapter = new MySqlDataAdapter(familyQuery, conn);
-                    //DataTable familyTable = new DataTable();
-                    //familyAdapter.Fill(familyTable);
-
-                    //cmb_Fid.DataSource = familyTable;
-                    //cmb_Fid.DisplayMember = "id";
-                    //cmb_Fid.ValueMember = "id";
-
-                    //if (row["family_id"] != DBNull.Value)
-                    //{
-                    //    cmb_Fid.SelectedValue = Convert.ToInt32(row["family_id"]);
-                    //}
-
                     //-----------------Date of Birth-----------------
                     dtp_Dob.Value = row["date_of_birth"] != DBNull.Value
                         ? Convert.ToDateTime(row["date_of_birth"])
@@ -157,7 +142,6 @@ namespace WinFormsApp2
 
                 return mobile;
             }
-        
-    
+       
     }
 }
