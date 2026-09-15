@@ -78,7 +78,6 @@ namespace WinFormsApp2.DAL
 
         }
 
-        // Backwards-compatible wrapper for callers using GetById
         public DataTable GetById(string id)
         {
             // Reuse existing DirectDBShow implementation to avoid duplicate code
@@ -101,6 +100,34 @@ namespace WinFormsApp2.DAL
             {
                 MessageBox.Show("An error occurred while accessing the database: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return dt;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public int DeleteStudent(string id)
+        {
+            MySqlConnection conn = new MySqlConnection(connString);
+
+            try
+            {
+                conn.Open();
+
+                // Delete student
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM students WHERE id = @id",conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                int affectedRows = cmd.ExecuteNonQuery();
+
+                return affectedRows;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("An error occurred while deleting data: " + ex.Message,"Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return 0;
             }
             finally
             {

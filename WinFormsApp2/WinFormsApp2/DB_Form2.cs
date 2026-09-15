@@ -79,6 +79,7 @@ namespace WinFormsApp2
             MySqlConnection conn = new MySqlConnection(connString);
             try
             {
+                conn.Open();  
                 if (dgv_Student.Rows.Count == 0)
                 {
                     MessageBox.Show("No records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -149,25 +150,23 @@ namespace WinFormsApp2
                 // ---------------------GRADE ID---------------------------
 
 
-                conn.Open();
-
                 string query = "SELECT * FROM grades";
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                cmb_Gn.DataSource = dt;
-                // what user sees
-                cmb_Gn.DisplayMember = "grade_name";
-                // hidden value
-                cmb_Gn.ValueMember = "id";
+                //cmb_Gn.DataSource = dt;
+                //// what user sees
+                //cmb_Gn.DisplayMember = "grade_name";
+                //// hidden value
+                //cmb_Gn.ValueMember = "id";
 
 
-                // select student's grade
-                if (!string.IsNullOrEmpty(grade))
-                {
-                    cmb_Gn.SelectedValue = Convert.ChangeType(grade, dt.Columns["id"].DataType);
-                }
+                //// select student's grade
+                //if (!string.IsNullOrEmpty(grade))
+                //{
+                //    cmb_Gn.SelectedValue = Convert.ChangeType(grade, dt.Columns["id"].DataType);
+                //}
 
 
                 //------------ HOUSE NAME---------------------------
@@ -183,11 +182,11 @@ namespace WinFormsApp2
                 cmb_Hn.ValueMember = "id";
 
 
-                // select student's house
-                if (!string.IsNullOrEmpty(house))
-                {
-                    cmb_Hn.SelectedValue = Convert.ToInt32(house);
-                }
+                //// select student's house
+                //if (!string.IsNullOrEmpty(house))
+                //{
+                //    cmb_Hn.SelectedValue = Convert.ToInt32(house);
+                //}
 
 
 
@@ -198,9 +197,9 @@ namespace WinFormsApp2
                     cmb_Med.Text = medium;
                 }
 
-                // MEDIUM — fixed list, no database table
-                cmb_Med.Items.Clear();
-                cmb_Med.Items.AddRange(new string[] { "Sinhala", "Tamil", "English" });
+                //// MEDIUM — fixed list, no database table
+                //cmb_Med.Items.Clear();
+                //cmb_Med.Items.AddRange(new string[] { "Sinhala", "Tamil", "English" });
 
             }
             catch (MySqlException ex)
@@ -238,50 +237,46 @@ namespace WinFormsApp2
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-
-            MySqlConnection conn = new MySqlConnection(connString);
-
             try
             {
-                if (dgv_Student.Rows.Count == 0)
+                // Check row selection
+                if (dgv_Student.CurrentRow == null)
                 {
-                    MessageBox.Show("No records found.", "Delete Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please select a student first.", "No Selection", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
                     return;
                 }
 
-                string studentId = dgv_Student.CurrentRow.Cells["id"].Value.ToString();
+                // Get selected student ID
+                string id = dgv_Student.CurrentRow.Cells["id"].Value.ToString();
 
-                conn.Open();
+                // Confirmation message
+                DialogResult confirm = MessageBox.Show("Are you sure you want to delete this student?", "Confirm Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
 
-                // 1. Get the family_id of the selected student
-                MySqlCommand getFamilyCmd = new MySqlCommand($"SELECT family_id FROM students WHERE id='{studentId}'", conn);
-
-                object familyResult = getFamilyCmd.ExecuteScalar();
-                string familyId = familyResult != null ? familyResult.ToString() : "";
-
-                // 2. Delete the student
-                MySqlCommand cmd = new MySqlCommand($"DELETE FROM students WHERE id = '{studentId}'", conn);
-
-                string affectedRows = cmd.ExecuteNonQuery().ToString();
-
-                // 3. Delete the family record created for this student
-
-                if (!string.IsNullOrEmpty(familyId))
+                if (confirm == DialogResult.Yes)
                 {
-                    MySqlCommand familyCmd = new MySqlCommand($"DELETE FROM families WHERE id='{familyId}'",conn);
+                    StudentDAL studentDAL = new StudentDAL();
+                    int result = studentDAL.DeleteStudent(id);
 
-                    familyCmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show( "Student deleted successfully.", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        // Refresh DataGridView
+                        DataTable dt = studentDAL.GetAll();
+                        dgv_Student.DataSource = dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show( "Student delete failed.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-
-                MessageBox.Show($"Deleted successfully. Row(s) affected: {affectedRows}", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while deleting the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
+                MessageBox.Show("Error: " + ex.Message, "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -358,39 +353,11 @@ namespace WinFormsApp2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error opening insert form: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error opening insert form: " + ex.Message,"Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
-        private void ClearFields()
-        {
-            txt_Sid.Text = "";
-            txt_Fn.Text = "";
-            txt_Ln.Text = "";
-            txt_Nic.Text = "";
-            txt_Tel.Text = "";
-            txt_Fid.Text = "";
-            txt_Add.Text = "";
-            txt_Adn.Text = "";
-            cmb_Med.Text = "";
 
-
-            rbn_Male.Checked = false;
-            rbn_Female.Checked = false;
-
-            dtp_Doa.Value = DateTime.Now;
-            dtp_Dob.Value = DateTime.Now;
-          
-            cmb_Gn.SelectedIndex = -1;
-            cmb_Hn.SelectedIndex = -1;
-            
-
-            //LoadNextStudentId();
-
-        }
         private void btn_Edit_Click(object sender, EventArgs e)
         {
 
@@ -427,9 +394,30 @@ namespace WinFormsApp2
             }
         }
 
-        private void lbl_Ln_Click(object sender, EventArgs e)
-        {
 
+        private void ClearFields()
+        {
+            txt_Sid.Text = "";
+            txt_Fn.Text = "";
+            txt_Ln.Text = "";
+            txt_Nic.Text = "";
+            txt_Tel.Text = "";
+            txt_Fid.Text = "";
+            txt_Add.Text = "";
+            txt_Adn.Text = "";
+            cmb_Med.Text = "";
+
+
+            rbn_Male.Checked = false;
+            rbn_Female.Checked = false;
+
+            dtp_Doa.Value = DateTime.Now;
+            dtp_Dob.Value = DateTime.Now;
+
+            cmb_Gn.SelectedIndex = -1;
+            cmb_Hn.SelectedIndex = -1;
+
+            //LoadNextStudentId();
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)

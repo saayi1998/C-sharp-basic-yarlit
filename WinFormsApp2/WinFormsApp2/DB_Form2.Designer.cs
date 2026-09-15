@@ -279,7 +279,6 @@
             lbl_Ln.TabIndex = 7;
             lbl_Ln.Text = "Last Name";
             lbl_Ln.TextAlign = ContentAlignment.MiddleLeft;
-            lbl_Ln.Click += lbl_Ln_Click;
             // 
             // lbl_Gender
             // 
