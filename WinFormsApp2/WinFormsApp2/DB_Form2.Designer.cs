@@ -33,7 +33,6 @@
             btn_AllGradeLoad = new Button();
             btn_DirectDBShow = new Button();
             btn_Show = new Button();
-            btn_PopShow = new Button();
             btn_Edit = new Button();
             btn_Delete = new Button();
             btn_Insert = new Button();
@@ -122,16 +121,6 @@
             btn_Show.Text = "Show";
             btn_Show.UseVisualStyleBackColor = true;
             btn_Show.Click += btn_Show_Click;
-            // 
-            // btn_PopShow
-            // 
-            btn_PopShow.Location = new Point(833, 28);
-            btn_PopShow.Name = "btn_PopShow";
-            btn_PopShow.Size = new Size(146, 47);
-            btn_PopShow.TabIndex = 0;
-            btn_PopShow.Text = "Pop Show";
-            btn_PopShow.UseVisualStyleBackColor = true;
-            btn_PopShow.Click += btn_PopShow_Click;
             // 
             // btn_Edit
             // 
@@ -449,9 +438,9 @@
             // 
             // btn_Clear
             // 
-            btn_Clear.Location = new Point(998, 32);
+            btn_Clear.Location = new Point(846, 28);
             btn_Clear.Name = "btn_Clear";
-            btn_Clear.Size = new Size(100, 43);
+            btn_Clear.Size = new Size(111, 47);
             btn_Clear.TabIndex = 9;
             btn_Clear.Text = "Clear";
             btn_Clear.UseVisualStyleBackColor = true;
@@ -505,7 +494,6 @@
             Controls.Add(btn_Insert);
             Controls.Add(btn_Delete);
             Controls.Add(btn_Edit);
-            Controls.Add(btn_PopShow);
             Controls.Add(btn_Show);
             Controls.Add(btn_DirectDBShow);
             Controls.Add(btn_AllGradeLoad);
@@ -527,7 +515,6 @@
         private Button btn_AllGradeLoad;
         private Button btn_DirectDBShow;
         private Button btn_Show;
-        private Button btn_PopShow;
         private Button btn_Edit;
         private Button btn_Delete;
         private Button btn_Insert;
